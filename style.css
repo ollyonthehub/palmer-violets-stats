@@ -162,3 +162,190 @@ tbody tr:hover{background:#f1eafb}
 .record-board .record-focus{background:#efe6fa}
 @media(max-width:1050px){.record-leaderboards{gap:9px}.record-board .panel-heading{padding:13px 10px}.record-board .panel-heading h3{font-size:18px}.record-board td{font-size:11px}.record-board td strong{font-size:11px}.record-board th:first-child,.record-board td:first-child{padding-left:8px}.record-board th:last-child,.record-board td:last-child{padding-right:9px;width:52px}.record-board .rank{margin-right:4px}}
 @media(max-width:700px){.record-leaderboards{grid-template-columns:1fr;gap:14px}.record-board .panel-heading h3{font-size:22px}.record-board td strong{font-size:13px}.record-board .rank{margin-right:10px}}
+
+
+/* V12 - resilient responsive layout, keeping statistics always visible */
+html,body{max-width:100%;overflow-x:clip}
+.shell,.main,#app,.content,.panel,.cols>*,.split>*,.fixture-card,.metric{min-width:0}
+img{max-width:100%}
+.table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+/* Record boards are true two-column tables, never the general 440px tables. */
+.record-leaderboards{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;min-width:0}
+.record-board{min-width:0;overflow:hidden}
+.record-board .table-wrap{overflow:visible;width:100%;max-width:100%}
+.record-board table{table-layout:fixed;width:100%;min-width:0!important}
+.record-board th:first-child,.record-board td:first-child{width:auto;min-width:0;overflow-wrap:anywhere;word-break:normal;white-space:normal;padding:10px 6px 10px 11px}
+.record-board th:last-child,.record-board td:last-child{width:56px;min-width:56px;max-width:56px;padding:10px 10px 10px 2px;text-align:right;white-space:nowrap}
+.record-board td strong{font-size:clamp(11px,1.06vw,13px);line-height:1.25}
+.record-board td{height:auto;min-height:47px}
+.record-board .rank{display:inline-block;min-width:19px;margin:0 5px 0 0;font-size:10px;white-space:nowrap}
+.record-board .panel-heading{flex-wrap:wrap}
+.record-board .record-value{font-size:25px;line-height:1}
+.record-board .record-focus{background:#efe6fa}
+/* On compact desktop / tablets, a single-column record list prevents unusable narrow tables. */
+@media(max-width:1059px){
+ .record-leaderboards{grid-template-columns:1fr;gap:15px}
+ .record-board td strong{font-size:13px}
+ .record-board th:last-child,.record-board td:last-child{width:77px;min-width:77px;max-width:77px;padding-right:17px}
+}
+@media(min-width:1060px) and (max-width:1250px){
+ .record-board .panel-heading h3{font-size:17px}
+ .record-board .record-count{font-size:9px}
+ .record-board th:first-child,.record-board td:first-child{padding-left:8px}
+ .record-board .rank{margin-right:2px}
+}
+/* Tables elsewhere become readable stat cards rather than squeezing text or requiring page scrolling. */
+@media(max-width:640px){
+ .responsive-table,.responsive-table table,.responsive-table tbody,.responsive-table tr,.responsive-table td{display:block;width:100%;min-width:0!important;max-width:100%}
+ .responsive-table thead{display:none}
+ .responsive-table tbody{padding:8px}
+ .responsive-table tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 9px;background:#fff;border:1px solid #d7c5ea;margin:7px 0;padding:10px;border-radius:3px}
+ .responsive-table tbody tr:first-child{margin-top:0}
+ .responsive-table tbody tr:last-child{margin-bottom:0}
+ .responsive-table tbody td{border:0;padding:4px 2px!important;min-width:0;overflow-wrap:anywhere;text-align:left!important}
+ .responsive-table tbody td:first-child{grid-column:1/-1;border-bottom:1px solid #e8e0f1;padding-bottom:8px!important}
+ .responsive-table tbody td::before{content:attr(data-label);display:block;font:800 9px/1.4 'Roboto Mono',monospace;letter-spacing:.4px;color:#806d97;margin-bottom:4px}
+ .responsive-table tbody td[colspan]{grid-column:1/-1}
+ .responsive-table .pill{white-space:nowrap}
+ .record-board .table-wrap,.record-board table,.record-board tbody,.record-board tr,.record-board td{display:revert;min-width:0!important}
+ .record-board thead{display:table-header-group}
+ .record-board tbody{padding:0}
+ .record-board tbody tr{display:table-row;margin:0;padding:0;border:0;background:transparent}
+ .record-board tbody td{display:table-cell;width:auto;max-width:none;padding:10px!important;border-bottom:1px solid #e7e0ef;text-align:left!important}
+ .record-board tbody td:last-child{width:77px;min-width:77px!important;max-width:77px;text-align:right!important;padding-right:18px!important}
+ .record-board tbody td:first-child{width:auto;min-width:0!important;border-bottom:1px solid #e7e0ef}
+ .record-board tbody td::before{display:none}
+ .record-board .record-focus{background:#efe6fa}
+ .record-board tbody td strong{font-size:13px}
+ .metric-num{font-size:clamp(25px,8vw,37px)}
+ .player-stats{flex-wrap:wrap;gap:9px 14px}
+ .season-stats{flex-wrap:wrap;gap:8px 14px}
+ .footer{overflow-wrap:anywhere}
+ .chart-line .label{width:75px}
+ .filters>*{max-width:100%;min-width:0;flex:1 1 100%}
+ .detail-head{min-width:0;gap:12px}
+ .detail-head h1{font-size:clamp(24px,7vw,37px);overflow-wrap:anywhere}
+ .award-season-head{flex-wrap:wrap}
+ .fixture-top{flex-wrap:wrap}
+}
+@media(max-width:380px){
+ .hero h1{font-size:clamp(30px,9.5vw,37px)}
+ .hero{padding:19px 15px}
+ .metrics{gap:7px}
+ .metric{padding:11px 9px}
+ .player-grid{grid-template-columns:1fr}
+ .breadcrumbs{font-size:10px}
+ .topbar .status{font-size:8px;padding:6px 8px}
+ .sidebar nav a{font-size:11px;padding:8px 9px}
+}
+
+/* Keep every section discoverable on narrow phones; no hidden horizontal-only nav. */
+@media(max-width:760px){
+  .sidebar nav{flex-wrap:wrap;overflow:visible;gap:5px}
+  .sidebar nav a{flex:1 1 calc(33.333% - 5px);min-width:0;justify-content:center;white-space:nowrap;padding:9px 6px;font-size:11px}
+  .sidebar nav a .ico{width:auto;font-size:14px}
+  .sidebar{position:relative}
+  .record-board .table-wrap{overflow:visible}
+}
+@media(max-width:380px){.sidebar nav a{font-size:10px;padding:9px 3px;gap:4px}}
+
+/* 2026/27 matchday hub */
+.current-filters{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.current-filters .select{min-width:210px;max-width:330px}
+.filter-caption{color:#5b3483;font:800 12px 'Barlow Condensed',Impact,sans-serif;letter-spacing:1.4px}
+.current-board-note{font-size:12px;color:#624d7b;margin:3px 0 14px}
+.current-boards{margin-bottom:18px}
+.current-boards .record-board .table-wrap{overflow:visible}
+.current-boards .record-board table{width:100%;min-width:0;table-layout:fixed}
+.current-boards .record-board th:first-child,.current-boards .record-board td:first-child{width:auto;min-width:0;overflow-wrap:anywhere}
+.current-boards .record-board th:last-child,.current-boards .record-board td:last-child{width:69px;min-width:69px;max-width:69px;text-align:right}
+.current-empty{grid-column:1/-1;color:#674d7c}
+@media(max-width:760px){
+ .current-filters .select{max-width:100%;width:100%;flex:1 1 100%}
+ .current-boards .record-board th:last-child,.current-boards .record-board td:last-child{width:72px;min-width:72px;max-width:72px}
+}
+
+/* V16: non-table leaderboards. Names and totals are ALWAYS visible; no sideways scrolling. */
+.record-board .leader-header,
+.record-board .leader-entry{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) max-content;
+  width:100%;
+  min-width:0;
+  align-items:center;
+}
+.record-board .leader-header{
+  padding:13px 16px;
+  background:#e5d8f0;
+  color:#4a2871;
+  border-bottom:2px solid #9b7bc4;
+  font:800 11px/1.2 'Roboto Mono',monospace;
+}
+.record-board .leader-header span:last-child{text-align:right;min-width:46px}
+.record-board .leader-list{list-style:none;margin:0;padding:0;max-width:100%;min-width:0}
+.record-board .leader-entry{
+  border-bottom:1px solid #e5dbea;
+  background:#fff;
+  padding:0 16px 0 12px;
+  min-height:53px;
+  column-gap:8px;
+}
+.record-board .leader-entry:nth-child(even){background:#f6f0fb}
+.record-board .leader-entry:last-child{border-bottom:0}
+.record-board .leader-person{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  width:100%;
+  text-align:left;
+  border:0;
+  background:none;
+  color:#32134e;
+  cursor:pointer;
+  padding:12px 0;
+  font:800 12px/1.3 'Roboto Mono',monospace;
+}
+.record-board .leader-person:hover .leader-name{text-decoration:underline}
+.record-board .leader-person:focus-visible{outline:2px solid #4e2383;outline-offset:2px}
+.record-board .leader-rank{
+  flex:none;
+  color:#967eb0;
+  font-size:10px;
+  font-weight:800;
+  min-width:18px;
+}
+.record-board .leader-name{
+  min-width:0;
+  flex:1;
+  white-space:normal;
+  overflow-wrap:break-word;
+}
+.record-board .leader-total{
+  justify-self:end;
+  flex:none;
+  min-width:30px;
+  text-align:right;
+  font:900 26px/1 'Barlow Condensed',Impact,sans-serif;
+  color:#452078;
+  font-variant-numeric:tabular-nums;
+}
+.record-board .leader-top{background:#fff2c7!important;box-shadow:inset 4px 0 #c18b23}
+.record-board .leader-top .leader-name,
+.record-board .leader-top .leader-total{color:#996300!important}
+.record-board .leader-top .leader-rank{color:#ad7b23}
+.record-board .leader-empty{background:#fff;padding:22px 14px;color:#725982;font-size:12px}
+@media(max-width:1250px){
+ .record-board .leader-entry{padding-right:12px;padding-left:9px;column-gap:6px}
+ .record-board .leader-person{gap:5px;font-size:11px}
+ .record-board .leader-header{padding:12px}
+}
+@media(max-width:1059px){
+ .record-board .leader-entry{padding:0 17px}
+ .record-board .leader-person{font-size:13px}
+}
+@media(max-width:420px){
+ .record-board .leader-entry{padding:0 11px}
+ .record-board .leader-header{padding:11px}
+ .record-board .leader-person{font-size:12px}
+}

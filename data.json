@@ -2224,11 +2224,6 @@
           "motm": 0
         },
         {
-          "name": "Will Turner",
-          "goals": 0,
-          "motm": 0
-        },
-        {
           "name": "William Healey",
           "goals": 0,
           "motm": 0
@@ -2251,11 +2246,12 @@
       ]
     }
   ],
-  "lastUpdated": "2026-11-04",
+  "lastUpdated": "2026-11-05",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date and MOTM still unconfirmed.",
-    "HOTShots goalkeeper excluded from named appearance totals."
+    "HOTShots goalkeeper excluded from named appearance totals.",
+    "Will Turner did not play vs Running on Prosecco; 11 recorded appearances in that match."
   ],
   "awards": {
     "2024/25": {

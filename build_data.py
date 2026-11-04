@@ -34,7 +34,7 @@ read('/mnt/data/Palmer_Violets_2025_26_HBC_Mens.xlsx',5,5,'25')
 
 matches.extend([
  {'id':'26-1','season':'2026/27','competition':"Hibiscus Coast Mens",'phase':'League','date':'2026-10-16','opponent':'Rushed Intercourse','opponentId':'Rushed Intercourse','gf':4,'ga':2,'ownGoals':0,'players':[{'name':n,'goals':g,'motm':int(n=='Connor Passingham')} for n,g in [('Christian Collins',1),('Cayden Steffener',2),('Connor Passingham',1),('Jamison Lawrence',0),('Fabiano Jesus',0),('Oliver Graham',0),('Connagh Webb',0),('Taj Oliver',0),('Max Boundy',0),('William Healey',0)]]},
- {'id':'26-2','season':'2026/27','competition':'Hibiscus Coast Mixed','phase':'League','date':None,'opponent':'Running on Prosecco','opponentId':'Running on Prosecco','gf':14,'ga':3,'ownGoals':0,'motmStatus':'unconfirmed','players':[{'name':n,'goals':g,'motm':0} for n,g in [('Cayden Steffener',6),('Connor Passingham',2),('Jamison Lawrence',2),('Fabiano Jesus',2),('Connagh Webb',1),('Taj Oliver',1),('Max Boundy',0),('Will Turner',0),('William Healey',0),('Oliver Graham',0),('Niva Smith',0),('Sophia Barnett',0)]]}
+ {'id':'26-2','season':'2026/27','competition':'Hibiscus Coast Mixed','phase':'League','date':None,'opponent':'Running on Prosecco','opponentId':'Running on Prosecco','gf':14,'ga':3,'ownGoals':0,'motmStatus':'unconfirmed','players':[{'name':n,'goals':g,'motm':0} for n,g in [('Cayden Steffener',6),('Connor Passingham',2),('Jamison Lawrence',2),('Fabiano Jesus',2),('Connagh Webb',1),('Taj Oliver',1),('Max Boundy',0),('William Healey',0),('Oliver Graham',0),('Niva Smith',0),('Sophia Barnett',0)]]}
 ])
 # integrity reports
 for season in ['2024/25','2025/26','2026/27']:

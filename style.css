@@ -591,3 +591,48 @@ img{max-width:100%}
  .mvp-breakdown-footnote{padding:10px 11px 13px;font-size:10px}
 }
 @media(max-width:360px){.mvp-vote-avatar{flex-basis:27px;width:27px;height:27px}.mvp-vote-person{gap:4px}.mvp-vote-name{font-size:11px}.mvp-breakdown-table thead th{font-size:8px}.mvp-breakdown-table thead th small{font-size:6px}}
+
+
+/* V23: match results, archive and match-history MOTM portrait column */
+.match-results-table{width:100%;max-width:100%;min-width:0}
+.match-results-table .table-wrap{max-width:100%;overflow-x:auto}
+.match-results-table table{min-width:0;width:100%;table-layout:auto}
+.match-results-table th,.match-results-table td{vertical-align:middle;padding:11px 10px}
+.match-results-table .match-opponent-col{min-width:125px}
+.match-results-table .match-comp-col{min-width:114px}
+.match-results-table .competition-cell{white-space:normal;line-height:1.3}
+.match-results-table .match-date-col{min-width:80px;white-space:nowrap}
+.match-results-table .match-motm-col{width:86px;min-width:70px;text-align:center}
+.match-results-table th:nth-child(4){text-align:center}
+.match-results-table .match-score-col{width:100px;min-width:87px;white-space:nowrap}
+.match-motm-photos{display:inline-flex;align-items:center;justify-content:center;gap:5px;vertical-align:middle;max-width:100%}
+.match-motm-photo{display:block;flex:none;width:50px;height:50px;border:1px solid #bca6d1;border-radius:3px;overflow:hidden;background:#e3c7e8}
+.match-motm-photos.match-motm-multiple .match-motm-photo{width:36px;height:36px}
+.match-motm-photo .player-photo,.match-motm-photo .player-photo-fallback{width:100%;height:100%;display:block;object-fit:cover}
+.match-motm-photo .player-photo-fallback{display:grid;place-items:center}
+.match-motm-photo .player-photo-fallback>span{font:900 21px/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:0;color:#613985;text-shadow:none}
+.match-motm-photos.match-motm-multiple .player-photo-fallback>span{font-size:15px}
+.match-motm-none{font-weight:800;color:#9684aa;font-size:17px}
+.match-motm-pending{font:700 10px/1.3 'Roboto Mono',monospace;color:#80638c;white-space:nowrap}
+.match-results-table tbody tr:hover .match-motm-photo{border-color:#9b78ca}
+@media(max-width:1200px){
+ .match-results-table th,.match-results-table td{padding:10px 7px}
+ .match-results-table .match-motm-col{width:65px;min-width:61px}
+ .match-motm-photo{width:43px;height:43px}
+ .match-motm-photos.match-motm-multiple{gap:2px}
+ .match-motm-photos.match-motm-multiple .match-motm-photo{width:29px;height:29px}
+ .match-results-table .match-score-col{width:80px;min-width:76px}
+}
+@media(max-width:640px){
+ .match-results-table .responsive-table tbody tr{grid-template-columns:minmax(0,1fr) 106px;gap:5px 11px}
+ .match-results-table .responsive-table tbody td{min-width:0;max-width:100%;padding:5px 4px!important}
+ .match-results-table .responsive-table tbody td:first-child{grid-column:1/-1}
+ .match-results-table .responsive-table tbody .match-opponent-col{grid-column:1;grid-row:2;min-width:0}
+ .match-results-table .responsive-table tbody .match-comp-col{grid-column:1;grid-row:3;min-width:0}
+ .match-results-table .responsive-table tbody .match-motm-col{grid-column:2;grid-row:2 / span 2;min-width:0;width:auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;text-align:center!important}
+ .match-results-table .responsive-table tbody .match-score-col{grid-column:1/-1;grid-row:4;min-width:0;width:auto;display:flex;gap:7px;align-items:center;justify-content:flex-start}
+ .match-results-table .responsive-table tbody td::before{margin-bottom:2px}
+ .match-results-table .responsive-table tbody .match-score-col::before{margin:0 6px 0 0}
+ .match-motm-photo{width:48px;height:48px}
+ .match-motm-photos.match-motm-multiple .match-motm-photo{width:32px;height:32px}
+}

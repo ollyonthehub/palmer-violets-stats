@@ -42,4 +42,27 @@ for season in ['2024/25','2025/26','2026/27']:
  print(season,len(mm),'GF',sum(m['gf'] for m in mm),'GA',sum(m['ga'] for m in mm),'apps',sum(len(m['players']) for m in mm),'playerGoals',sum(sum(p['goals'] for p in m['players']) for m in mm),'OG',sum(m['ownGoals'] for m in mm))
  for m in mm:
   if sum(p['goals'] for p in m['players'])+m['ownGoals']!=m['gf']:print('GOALS MISMATCH',m['id'],m['opponent'])
-json.dump({'matches':matches,'lastUpdated':'2026-11-05','notes':['Read-only public statistics. Source data updated through audited records.','Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; MOTM still unconfirmed.','HOTShots goalkeeper excluded from named appearance totals.']},open(D+'/data.json','w'),indent=2)
+# Preserve manually confirmed awards, fixtures and MVP votes when rebuilding match logs.
+# The source spreadsheets do not include these additional site fields.
+current_path = os.path.join(D, 'data.json')
+previous = {}
+if os.path.exists(current_path):
+ try:
+  with open(current_path, encoding='utf-8') as f: previous = json.load(f)
+ except (OSError, ValueError):
+  previous = {}
+
+mvpVotesByMatch = {'26-1': {'Connor Passingham':5, 'Fabiano Jesus':4, 'Cayden Steffener':2}}
+payload = {
+ 'matches':matches,
+ 'lastUpdated':'2026-11-05',
+ 'notes': previous.get('notes', [
+  'Read-only public statistics. Source data updated through audited records.',
+  'Hibiscus Coast Mixed Running on Prosecco: 16 October 2026; MOTM pending.'
+ ]),
+ 'awards':previous.get('awards',{}),
+ 'upcomingFixtures':previous.get('upcomingFixtures',[]),
+ 'mvpVotesByMatch':previous.get('mvpVotesByMatch',mvpVotesByMatch)
+}
+with open(current_path,'w',encoding='utf-8') as f:json.dump(payload,f,indent=2,ensure_ascii=False)
+with open(os.path.join(D,'data.js'),'w',encoding='utf-8') as f:f.write('window.PV_DATA='+json.dumps(payload,ensure_ascii=False,separators=(',',':'))+';\n')

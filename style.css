@@ -478,3 +478,60 @@ img{max-width:100%}
  .award-portrait { width:64px; height:64px; flex-basis:64px; }
  .award-person .award-player,.award-person-static .award-player-static { font-size:21px; }
 }
+
+/* V21 — full-width MVP race. A responsive SVG graph and image-based ranking strip. */
+.mvp-tracker{margin-top:29px;min-width:0;width:100%}
+.mvp-section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:13px;flex-wrap:wrap}
+.mvp-section-heading .eyebrow{margin:0 0 5px;color:#7b4fa2}
+.mvp-section-heading h2{margin:0;color:#31134f;font:900 clamp(28px,3.1vw,39px)/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;letter-spacing:.4px}
+.mvp-spark{display:inline-block;margin-left:10px;color:#b18322;font-size:22px;vertical-align:top}
+.mvp-section-heading p{margin:7px 0 0;font-size:12px;color:#786587}
+.mvp-stamp{background:#e9dff4;border:1px solid #cbb8df;color:#4d276f;padding:7px 12px;display:flex;align-items:center;gap:10px}
+.mvp-stamp strong{font:900 28px/1 'Barlow Condensed',Impact,sans-serif}
+.mvp-stamp span{max-width:90px;font:800 9px/1.3 'Roboto Mono',monospace;letter-spacing:.3px}
+.mvp-chart-panel{min-width:0;overflow:hidden;width:100%;margin-bottom:18px}
+.mvp-chart-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 19px;color:#f6ebff;background:linear-gradient(90deg,#51247e,#2c1647);font:800 11px/1.4 'Roboto Mono',monospace;letter-spacing:.5px}
+.mvp-chart-head span:last-child{color:#dfc8f5}
+.mvp-chart-wide{display:block;max-width:100%;padding:14px 14px 0;background:#fbf8ff}
+.mvp-chart-compact{display:none}
+.mvp-chart-svg{width:100%;height:auto;display:block;overflow:visible}
+.mvp-grid-line{stroke:#e7dbee;stroke-width:1;stroke-dasharray:4 5}
+.mvp-axis-line{stroke:#b5a3c9;stroke-width:1.5}
+.mvp-axis{fill:#6f5a80;font:800 12px 'Roboto Mono',monospace}
+.mvp-x{font-size:13px}
+.mvp-chart-legend{border-top:1px solid #eadff2;display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;padding:14px 18px;background:#f8f3ff}
+.mvp-person{min-width:0;display:flex;align-items:center;gap:9px;border:1px solid #d8c5e8;background:#fff;padding:8px 10px;color:#351956;text-align:left;cursor:pointer;transition:background .15s}
+.mvp-person:hover{background:#efe4fa}
+.mvp-portrait{border:3px solid var(--mvp-player-colour);border-radius:50%;overflow:hidden;background:#e2c5e8;width:39px;height:39px;flex:0 0 39px;display:block}
+.mvp-portrait .player-photo,.mvp-portrait .player-photo-fallback{width:100%;height:100%;display:block;object-fit:cover}
+.mvp-portrait .player-photo-fallback{display:grid;place-items:center}
+.mvp-portrait .player-photo-fallback>span{font:900 17px/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:0;color:#5b347b;text-shadow:none}
+.mvp-person-name{min-width:0;flex:1;font:800 14px/1.15 'Barlow Condensed',Impact,sans-serif;overflow-wrap:anywhere}
+.mvp-person-score{flex:0 0 auto;font:900 26px/1 'Barlow Condensed',Impact,sans-serif;color:#472074;font-variant-numeric:tabular-nums}
+.mvp-person-score small{font:800 9px 'Roboto Mono',monospace}
+.mvp-footnote{color:#675777;font-size:11px;line-height:1.7;padding:0 19px 17px;margin:0;background:#f8f3ff}
+/* Match pages add a fourth column only for games in the MVP tracker season. */
+.lineup-header.lineup-with-mvp,.lineup-entry.lineup-with-mvp{grid-template-columns:minmax(0,1fr) 57px 54px 67px}
+.lineup-number.has-mvp{color:#7b38a0;font-size:21px}
+.match-mvp-summary{margin:9px 0 19px;color:#675778;font-size:12px;display:flex;flex-direction:column;gap:7px}
+.match-mvp-recipient{display:flex;align-items:center;gap:10px;justify-content:space-between;min-width:0}
+.match-mvp-recipient .squad-person{flex:1}
+.match-mvp-recipient strong{font:900 19px 'Barlow Condensed',Impact,sans-serif;color:#652792;white-space:nowrap}
+@media(max-width:760px){
+ .mvp-chart-wide{display:none}
+ .mvp-chart-compact{display:block;padding:12px 7px 0;background:#fbf8ff}
+ .mvp-chart-legend{grid-template-columns:1fr;padding:12px;gap:7px}
+ .mvp-chart-head{font-size:9px;padding:10px}
+ .mvp-axis{font-size:12px}
+ .lineup-header.lineup-with-mvp,.lineup-entry.lineup-with-mvp{grid-template-columns:minmax(0,1fr) 39px 40px 49px}
+ .lineup-header.lineup-with-mvp{font-size:8px;letter-spacing:0}
+ .lineup-entry.lineup-with-mvp{gap:2px;padding:7px 7px}
+ .lineup-entry.lineup-with-mvp .squad-avatar{width:35px;height:35px;flex-basis:35px}
+ .lineup-entry.lineup-with-mvp .squad-person{gap:6px;font-size:12px}
+ .lineup-entry.lineup-with-mvp .lineup-number{font-size:17px}
+}
+@media(max-width:350px){
+ .lineup-header.lineup-with-mvp,.lineup-entry.lineup-with-mvp{grid-template-columns:minmax(0,1fr) 35px 35px 44px}
+ .lineup-entry.lineup-with-mvp .squad-avatar{width:31px;height:31px;flex-basis:31px}
+ .lineup-entry.lineup-with-mvp .squad-person{font-size:11px}
+}

@@ -2251,7 +2251,10 @@
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; MOTM still unconfirmed.",
     "HOTShots goalkeeper excluded from named appearance totals.",
-    "Will Turner did not play vs Running on Prosecco; 11 recorded appearances in that match."
+    "Will Turner did not play vs Running on Prosecco; 11 recorded appearances in that match.",
+    "2026/27 MVP voting: 1 vote = 1 point; cumulative points combine all competitions.",
+    "Hibiscus Coast Mens vs Rushed Intercourse on 16 Oct 2026: Connor Passingham 5, Fabiano Jesus 4, Cayden Steffener 2.",
+    "Hibiscus Coast Mixed vs Running on Prosecco MVP voting remains pending; no zeros have been assumed."
   ],
   "awards": {
     "2024/25": {
@@ -2288,5 +2291,12 @@
       "competition": "Hibiscus Coast Mixed",
       "opponent": "Bare Biscuits"
     }
-  ]
+  ],
+  "mvpVotesByMatch": {
+    "26-1": {
+      "Connor Passingham": 5,
+      "Fabiano Jesus": 4,
+      "Cayden Steffener": 2
+    }
+  }
 }

@@ -110,6 +110,33 @@ function mvpSvg(series,compact=false){
  }).join('');
  return `<svg class="mvp-chart-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cumulative MVP points by week: ${esc(players.map(p=>p.name+' '+p.total).join(', '))}"><rect x="0" y="0" width="${W}" height="${H}" fill="#fbf8ff"/>${grid}<line x1="${L}" y1="${T}" x2="${L}" y2="${B}" class="mvp-axis-line"/><line x1="${L}" y1="${B}" x2="${R}" y2="${B}" class="mvp-axis-line"/>${lines}${labs}</svg>`;
 }
+// Recorded 2026/27 voting split by competition. Both the graph and this table
+// read the same mvpVotesByMatch source; games awaiting votes never count as zero.
+function mvpVoteBreakdown(){
+ const competitions=comps.slice(1);
+ const votesByPlayer=new Map();
+ for(const match of matches){
+  if(match.season!=='2026/27'||!competitions.includes(match.competition))continue;
+  const votes=mvpResult(match);
+  if(votes===null)continue;
+  for(const [name,value] of Object.entries(votes)){
+   const points=Number(value);
+   if(!Number.isFinite(points)||points<=0)continue;
+   if(!votesByPlayer.has(name))votesByPlayer.set(name,{name,byComp:Object.fromEntries(competitions.map(c=>[c,0])),total:0});
+   const player=votesByPlayer.get(name);
+   player.byComp[match.competition]+=points;
+   player.total+=points;
+  }
+ }
+ const players=[...votesByPlayer.values()].sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name,undefined,{sensitivity:'base'}));
+ const totals=Object.fromEntries(competitions.map(c=>[c,0]));
+ for(const player of players)for(const comp of competitions)totals[comp]+=player.byComp[comp];
+ const grandTotal=players.reduce((sum,p)=>sum+p.total,0);
+ const dataCell=(value,isTotal=false)=>`<td class="mvp-vote-value${isTotal?' mvp-vote-total':''}" aria-label="${value} ${value===1?'vote':'votes'}">${value?value:'—'}</td>`;
+ const rows=players.map((player,i)=>`<tr class="mvp-vote-row"><td><button type="button" class="mvp-vote-person" data-player="${esc(player.name)}" aria-label="View ${esc(displayPlayerName(player.name))}'s player profile"><span class="mvp-vote-avatar">${portraitHTML(player.name)}</span><span class="mvp-vote-name">${esc(displayPlayerName(player.name))}</span></button></td>${competitions.map(comp=>dataCell(player.byComp[comp])).join('')}${dataCell(player.total,true)}</tr>`).join('');
+ const totalRow=`<tr class="mvp-vote-footer"><th scope="row">TOTAL RECORDED</th>${competitions.map(comp=>`<td>${totals[comp]||'—'}</td>`).join('')}<td>${grandTotal}</td></tr>`;
+ return `<section class="panel mvp-breakdown-panel" aria-label="2026/27 MVP votes by competition"><div class="mvp-breakdown-heading"><div><span class="mvp-breakdown-kicker">ALL COMPETITIONS · 2026/27</span><h3>Vote Breakdown</h3></div><span class="mvp-breakdown-badge">${players.length} ${players.length===1?'PLAYER':'PLAYERS'} WITH VOTES</span></div><div class="mvp-breakdown-tablewrap"><table class="mvp-breakdown-table"><colgroup><col class="mvp-vote-playercol"><col span="4" class="mvp-vote-numcol"></colgroup><thead><tr><th scope="col">PLAYER</th><th scope="col" title="Warkworth Mixed">WW<small>MIXED</small></th><th scope="col" title="Hibiscus Coast Mens">HBC<small>MEN'S</small></th><th scope="col" title="Hibiscus Coast Mixed">HBC<small>MIXED</small></th><th scope="col" class="mvp-vote-total">TOTAL</th></tr></thead><tbody>${rows||'<tr><td colspan="5" class="mvp-vote-empty">No votes have been recorded yet.</td></tr>'}</tbody><tfoot>${totalRow}</tfoot></table></div><p class="mvp-breakdown-footnote">Recorded MOTM votes only. A dash means no votes recorded for that player in that competition; matches awaiting voting are excluded. Select a player to view their profile.</p></section>`;
+}
 function mvpTracker(){
  const {players,weeks,games}=mvpSeries();
  const pending=matches.filter(m=>m.season==='2026/27'&&mvpResult(m)===null).length;
@@ -117,7 +144,7 @@ function mvpTracker(){
  const colours=['#AE791D','#7433B3','#118B91','#C74F79','#3979B7','#879331','#A64D31','#C47B37'];
  const totalVotes=players.reduce((s,p)=>s+p.total,0);
  const legend=players.map((p,i)=>`<button class="mvp-person" type="button" data-player="${esc(p.name)}" aria-label="View ${esc(displayPlayerName(p.name))}'s profile"><span class="mvp-portrait" style="--mvp-player-colour:${colours[i%colours.length]}">${portraitHTML(p.name)}</span><span class="mvp-person-name">${esc(displayPlayerName(p.name))}</span><span class="mvp-person-score">${p.total} <small>pts</small></span></button>`).join('');
- return `<section class="mvp-tracker" aria-label="2026/27 MVP points tracker"><div class="mvp-section-heading"><div><div class="eyebrow">PLAYER OF THE YEAR RACE</div><h2>MVP Tracker<span class="mvp-spark">★</span></h2><p>Cumulative matchday votes · All 2026/27 competitions combined</p></div><div class="mvp-stamp"><strong>${totalVotes}</strong><span>VOTES RECORDED</span></div></div><div class="panel mvp-chart-panel"><div class="mvp-chart-head"><span>2026/27 MVP POINTS OVER TIME</span><span>${games.length} ${games.length===1?'MATCH':'MATCHES'} WITH VOTES</span></div><div class="mvp-chart-wide">${mvpSvg({players,weeks},false)}</div><div class="mvp-chart-compact">${mvpSvg({players,weeks},true)}</div><div class="mvp-chart-legend">${legend}</div><p class="mvp-footnote">Each MOTM vote is worth 1 MVP point. Lines show cumulative totals, grouped by match week. Only players who have received at least one vote appear.${pending?` Voting still to be recorded for ${pending} ${pending===1?'match':'matches'}; those votes are not treated as zero.`:''}</p></div></section>`;
+ return `<section class="mvp-tracker" aria-label="2026/27 MVP points tracker"><div class="mvp-section-heading"><div><div class="eyebrow">PLAYER OF THE YEAR RACE</div><h2>MVP Tracker<span class="mvp-spark">★</span></h2><p>Cumulative matchday votes · All 2026/27 competitions combined</p></div><div class="mvp-stamp"><strong>${totalVotes}</strong><span>VOTES RECORDED</span></div></div><div class="panel mvp-chart-panel"><div class="mvp-chart-head"><span>2026/27 MVP POINTS OVER TIME</span><span>${games.length} ${games.length===1?'MATCH':'MATCHES'} WITH VOTES</span></div><div class="mvp-chart-wide">${mvpSvg({players,weeks},false)}</div><div class="mvp-chart-compact">${mvpSvg({players,weeks},true)}</div><div class="mvp-chart-legend">${legend}</div><p class="mvp-footnote">Each MOTM vote is worth 1 MVP point. Lines show cumulative totals, grouped by match week. Only players who have received at least one vote appear.${pending?` Voting still to be recorded for ${pending} ${pending===1?'match':'matches'}; those votes are not treated as zero.`:''}</p></div>${mvpVoteBreakdown()}</section>`;
 }
 function currentSeasonPage(){
  const currentSeason='2026/27';

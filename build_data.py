@@ -34,7 +34,7 @@ read('/mnt/data/Palmer_Violets_2025_26_HBC_Mens.xlsx',5,5,'25')
 
 matches.extend([
  {'id':'26-1','season':'2026/27','competition':"Hibiscus Coast Mens",'phase':'League','date':'2026-10-16','opponent':'Rushed Intercourse','opponentId':'Rushed Intercourse','gf':4,'ga':2,'ownGoals':0,'players':[{'name':n,'goals':g,'motm':int(n=='Connor Passingham')} for n,g in [('Christian Collins',1),('Cayden Steffener',2),('Connor Passingham',1),('Jamison Lawrence',0),('Fabiano Jesus',0),('Oliver Graham',0),('Connagh Webb',0),('Taj Oliver',0),('Max Boundy',0),('William Healey',0)]]},
- {'id':'26-2','season':'2026/27','competition':'Hibiscus Coast Mixed','phase':'League','date':None,'opponent':'Running on Prosecco','opponentId':'Running on Prosecco','gf':14,'ga':3,'ownGoals':0,'motmStatus':'unconfirmed','players':[{'name':n,'goals':g,'motm':0} for n,g in [('Cayden Steffener',6),('Connor Passingham',2),('Jamison Lawrence',2),('Fabiano Jesus',2),('Connagh Webb',1),('Taj Oliver',1),('Max Boundy',0),('William Healey',0),('Oliver Graham',0),('Niva Smith',0),('Sophia Barnett',0)]]}
+ {'id':'26-2','season':'2026/27','competition':'Hibiscus Coast Mixed','phase':'League','date':'2026-10-16','opponent':'Running on Prosecco','opponentId':'Running on Prosecco','gf':14,'ga':3,'ownGoals':0,'motmStatus':'unconfirmed','players':[{'name':n,'goals':g,'motm':0} for n,g in [('Cayden Steffener',6),('Connor Passingham',2),('Jamison Lawrence',2),('Fabiano Jesus',2),('Connagh Webb',1),('Taj Oliver',1),('Max Boundy',0),('William Healey',0),('Oliver Graham',0),('Niva Smith',0),('Sophia Barnett',0)]]}
 ])
 # integrity reports
 for season in ['2024/25','2025/26','2026/27']:
@@ -42,4 +42,4 @@ for season in ['2024/25','2025/26','2026/27']:
  print(season,len(mm),'GF',sum(m['gf'] for m in mm),'GA',sum(m['ga'] for m in mm),'apps',sum(len(m['players']) for m in mm),'playerGoals',sum(sum(p['goals'] for p in m['players']) for m in mm),'OG',sum(m['ownGoals'] for m in mm))
  for m in mm:
   if sum(p['goals'] for p in m['players'])+m['ownGoals']!=m['gf']:print('GOALS MISMATCH',m['id'],m['opponent'])
-json.dump({'matches':matches,'lastUpdated':'2026-11-04','notes':['Read-only public statistics. Source data updated through audited records.','Hibiscus Coast Mixed Running on Prosecco match date and MOTM still unconfirmed.','HOTShots goalkeeper excluded from named appearance totals.']},open(D+'/data.json','w'),indent=2)
+json.dump({'matches':matches,'lastUpdated':'2026-11-05','notes':['Read-only public statistics. Source data updated through audited records.','Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; MOTM still unconfirmed.','HOTShots goalkeeper excluded from named appearance totals.']},open(D+'/data.json','w'),indent=2)

@@ -349,3 +349,40 @@ img{max-width:100%}
  .record-board .leader-header{padding:11px}
  .record-board .leader-person{font-size:12px}
 }
+
+
+/* V17 squad portraits: identical square framing, two-line nameplates and lavender initials fallback. */
+.player-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+.player-card { padding:0; border-radius:4px; overflow:hidden; min-width:0; display:flex; flex-direction:column; background:#fff; text-align:left; }
+.player-card:hover { transform:translateY(-3px); background:#fff; }
+.player-art { display:block; position:relative; aspect-ratio:1 / 1; width:100%; overflow:hidden; background:#dec5e9; isolation:isolate; }
+.player-photo { display:block; width:100%; height:100%; object-fit:cover; object-position:center top; background:#e2c4ea; }
+.player-photo-fallback { display:grid; place-items:center; width:100%; height:100%; background:radial-gradient(ellipse at 50% 26%,#f4d8ef 0%,#e2c5e8 51%,#c8a5dd 100%); }
+.player-photo-fallback > span { font:900 clamp(58px,8vw,106px)/1 'Barlow Condensed',Impact,sans-serif; letter-spacing:-2px; color:#633d83; text-shadow:0 2px 0 #fff5; }
+.player-nameplate { position:absolute; inset:auto 0 0; z-index:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; padding:46px 13px 15px; color:#fff; background:linear-gradient(transparent 0%,rgba(41,18,65,.58) 40%,rgba(37,15,61,.94) 100%); min-width:0; text-shadow:0 1px 2px #230b38; }
+.player-firstname,.player-lastname { display:block; max-width:100%; overflow-wrap:anywhere; text-transform:uppercase; }
+.player-nameplate .player-firstname { font:800 clamp(16px,1.8vw,22px)/1 'Barlow Condensed',Impact,sans-serif; letter-spacing:.9px; }
+.player-nameplate .player-lastname { font:900 clamp(24px,2.8vw,37px)/.97 'Barlow Condensed',Impact,sans-serif; letter-spacing:.15px; margin-top:2px; }
+.player-card-info { display:block; padding:12px 14px 15px; margin-top:auto; }
+.player-status { display:block; color:#6a4b85; font:800 10px/1.1 'Roboto Mono',monospace; text-transform:uppercase; letter-spacing:.4px; }
+.player-card .player-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; margin-top:13px; width:100%; color:#5b4570; text-transform:uppercase; font:800 10px/1.1 'Barlow Condensed',sans-serif; }
+.player-card .player-stats > span { min-width:0; }
+.player-card .player-stats b { display:block; font:900 26px/1 'Barlow Condensed',Impact,sans-serif; margin:0 0 3px; color:#472072; font-variant-numeric:tabular-nums; }
+.detail-head { display:flex; align-items:center; gap:25px; min-width:0; }
+.profile-portrait { display:block; flex:0 0 158px; width:158px; height:158px; border:3px solid #b49acc; background:#dec5e9; box-shadow:4px 4px 0 #cab3d9; overflow:hidden; border-radius:3px; }
+.profile-portrait .profile-photo { width:100%; height:100%; border:0; box-shadow:none; }
+.profile-portrait .player-photo-fallback > span { font:900 72px/1 'Barlow Condensed',Impact,sans-serif; }
+.profile-heading { min-width:0; }
+.detail-head .profile-heading h1 { margin:0 0 10px; line-height:.94; }
+.profile-heading h1 .player-firstname { font:800 clamp(24px,3.3vw,38px)/1 'Barlow Condensed',Impact,sans-serif; color:#67428d; letter-spacing:.5px; }
+.profile-heading h1 .player-lastname { font:900 clamp(35px,4.8vw,59px)/.99 'Barlow Condensed',Impact,sans-serif; color:#2d124b; margin-top:3px; }
+@media(max-width:1120px){ .player-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:760px){ .player-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .player-nameplate { padding:35px 10px 11px; } .player-nameplate .player-firstname{font-size:clamp(15px,4vw,19px);} .player-nameplate .player-lastname{font-size:clamp(21px,6vw,30px);} .player-card-info{padding:10px 9px 12px} .player-card .player-stats{gap:3px;} .player-card .player-stats b{font-size:23px} .profile-portrait{flex-basis:112px;width:112px;height:112px;} .profile-portrait .player-photo-fallback>span{font-size:54px;} .detail-head{gap:15px;} }
+@media(max-width:430px){ .player-card .player-stats{font-size:9px;} .player-card .player-stats b{font-size:20px;} .player-status{font-size:9px;} .profile-portrait{flex-basis:96px;width:96px;height:96px;} .profile-heading h1 .player-firstname{font-size:22px;} .profile-heading h1 .player-lastname{font-size:33px;} }
+@media(max-width:340px){ .player-grid{grid-template-columns:1fr;} .player-nameplate .player-lastname{font-size:33px;} }
+/* Keep the two name lines intact, including long surnames on narrow phones. */
+.player-nameplate .player-firstname,.player-nameplate .player-lastname { white-space:nowrap; overflow-wrap:normal; }
+@media(max-width:430px){
+ .player-nameplate .player-firstname{font-size:clamp(13px,3.8vw,18px);letter-spacing:0}
+ .player-nameplate .player-lastname{font-size:clamp(16px,4.7vw,23px);letter-spacing:-.3px}
+}

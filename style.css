@@ -648,3 +648,12 @@ img{max-width:100%}
 .profile-fact-note{font:600 11px/1.4 'DM Sans',system-ui,sans-serif;color:#756580}
 @media(max-width:760px){.profile-facts{gap:9px;margin-top:-3px;margin-bottom:17px}.profile-fact{padding:12px 11px}.profile-fact-label{font-size:9px;letter-spacing:.45px}.profile-fact-value{font-size:clamp(20px,4.5vw,28px)}.profile-fact-jersey{font-size:clamp(30px,8vw,41px)}.profile-fact-note{font-size:10px}}
 @media(max-width:340px){.profile-facts{grid-template-columns:1fr}}
+
+
+/* V26 — Compact illustrated shirt backs replace the old textual number panel. */
+.profile-fact:first-child {display:flex;flex-direction:column;justify-content:center;}
+.profile-fact-number {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-align:center;padding:9px 12px 10px;}
+.profile-shirt-image {display:block;width:min(100%,165px);height:auto;max-height:170px;object-fit:contain;filter:drop-shadow(1px 3px 2px rgba(55,27,75,.12));}
+.profile-shirt-season {font:800 13px/1.2 'Roboto Mono',monospace;letter-spacing:1.1px;color:#66418c;padding:2px 0 0;}
+@media(max-width:760px) {.profile-fact-number{padding:9px 6px 10px;gap:2px}.profile-shirt-image{width:min(100%,129px);max-height:134px}.profile-shirt-season{font-size:11px;letter-spacing:.8px}}
+@media(max-width:340px) {.profile-shirt-image{width:155px;max-height:165px}}

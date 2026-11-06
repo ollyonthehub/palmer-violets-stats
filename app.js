@@ -21,7 +21,9 @@ function playerProfileFacts(name){
  const number=db.shirtNumbersBySeason?.['2026/27']?.[name];
  return `<div class="profile-facts" aria-label="Player information">
   <div class="profile-fact"><div class="profile-fact-label">CLUB DEBUT</div><div class="profile-fact-value">${debut?esc(fmtDate(debut.date)):'Not recorded'}</div><div class="profile-fact-note">${debut?`First recorded appearance · ${esc(debut.season)}`:'No dated appearances in the archive'}</div></div>
-  <div class="profile-fact profile-fact-number"><div class="profile-fact-label">2026/27 SHIRT NUMBER</div><div class="profile-fact-value${Number.isInteger(number)?' profile-fact-jersey':''}">${Number.isInteger(number)?`<span class="profile-hash">#</span>${number}`:'Not recorded'}</div><div class="profile-fact-note">Season-specific squad number</div></div>
+  <div class="profile-fact profile-fact-number">${Number.isInteger(number)?`
+    <img class="profile-shirt-image" src="images/shirts/2026-27/number-${String(number).padStart(2,'0')}.webp" alt="Palmer Violets 2026/27 shirt, number ${number}" loading="lazy" decoding="async">
+    <div class="profile-shirt-season">2026/27</div>`:`<div class="profile-fact-label">SHIRT NUMBER</div><div class="profile-fact-value">Not recorded</div><div class="profile-shirt-season">2026/27</div>`}</div>
  </div>`;
 }
 function portraitHTML(name,detail=false){

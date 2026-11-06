@@ -138,3 +138,12 @@ Player profiles now show the player's **club debut**, calculated from their earl
 The `shirtNumbersBySeason` object in `data.json` holds season-specific shirt numbers (currently 2026/27). Future seasons can be added as separate keys without overwriting history. The 2026/27 entries are Will Turner #1, Christian Collins #7, Cayden Steffener #11, Connagh Webb #14, Fabiano Jesus #20, William Healey #23, Connor Passingham #26, Oliver Graham #30, Max Boundy #49, Jamison Lawrence #56, Jesse Attwood #64 and Taj Oliver #99. Players without supplied shirt numbers show **Not recorded**.
 
 To update from V24, replace `app.js`, `style.css`, `data.js`, `data.json` and `build_data.py`. `README.md` is updated documentation (optional).
+
+
+## V26 — 2026/27 illustrated squad shirts
+
+The player profile now shows a small illustrated **back of the 2026/27 Palmer Violets kit** with the relevant squad number, and the season label **2026/27** beneath it. This replaces the text-only shirt-number display. The illustration is derived from the user's approved 14-shirt composite; names, sponsors and extraneous text are not part of the individual graphics. Each shirt is a separate transparent WebP in `images/shirts/2026-27/` to avoid fetching the full composite per player.
+
+Added **Blake Boundy #27** and **Tom Barnett #8** to the season-specific mapping. Existing twelve numbers and all historical match records remain as before. If a player has no 2026/27 number recorded, the profile continues to indicate that no number has been recorded.
+
+**GitHub update from V25:** replace `app.js`, `style.css`, `data.js`, and `data.json`; upload the whole new `images/shirts/2026-27/` folder (14 WebP files). `README.md` is documentation only. No changes to the player portraits or match stats.

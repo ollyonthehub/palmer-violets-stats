@@ -34,7 +34,7 @@ A match has a unique ID, season, competition, phase, date, opponent and opponent
 - 2024/25: WW Mixed (20 audited matches)
 - 2025/26: HBC Men's (14 audited matches, with league/finals only as phases)
 - 2026/27: HBC Men's (1 audited match), HBC Mixed (1 audited match), WW Mixed (no recorded matches yet)
-- HBC Mixed Running on Prosecco took place on 16 October 2026 (same day as Rushed Intercourse); its MOTM remains unconfirmed.
+- HBC Mixed Running on Prosecco took place on 16 October 2026 (same day as Rushed Intercourse); Cayden Steffener was MOTM.
 - The unnamed goalkeeper vs HOTShots is omitted from player stats on request.
 - Historic opponents The Playful Puppies / Funky Eh are merged under one opponent ID.
 - Assists are not tracked.
@@ -99,5 +99,42 @@ When adding new portraits, keep a square crop and add the relative path `images/
 ### V18 — Player image organisation and fixture date
 
 - The 13 approved WebP portraits now live under `images/players/`; `app.js` uses the new relative paths.
-- Running on Prosecco (Hibiscus Coast Mixed, 14–3) was played **16 October 2026**, the same day as Rushed Intercourse. MOTM remains unconfirmed.
+- Running on Prosecco (Hibiscus Coast Mixed, 14–3) was played **16 October 2026**, the same day as Rushed Intercourse. Cayden Steffener was MOTM.
 - Updating an existing GitHub repository: upload the complete `images/players/` folder and replace `app.js`, `data.js`, `data.json` and `build_data.py`. To finish tidying, remove the old root-level `pfp-*.webp` images once the site is working.
+
+### V19 changes
+The Overview, Records and 2026/27 leaderboards show the approved portrait from `images/players/`, or a lavender initials placeholder when no portrait exists, alongside player name and the relevant tally. The user-facing label for Joy Alinese is **Joy A.**; the canonical underlying name in the match data is preserved for historical continuity.
+
+
+## 2026/27 MVP tracker (V21)
+
+An **MVP vote is one point**, separate from the official Man of the Match award. On the 2026/27 page the chart combines **all competitions** irrespective of the selected competition filter, and plots cumulative points by match week. Only players with at least one recorded vote appear.
+
+Vote data lives in `data.json` at `mvpVotesByMatch`, and in the corresponding `window.PV_DATA` assignment in `data.js`. Each key is a match ID (such as `26-1`) whose value maps player names to vote counts. A missing match key means voting has **not been supplied**, not zero votes.
+
+Rushed Intercourse (16 October 2026): Connor Passingham 5, Fabiano Jesus 4, Cayden Steffener 2. Running on Prosecco votes have not yet been provided. The graph's y-axis automatically expands as cumulative votes increase, and future weekly data points append to each player's line.
+
+The match detail page shows an additional MVP PTS column for 2026/27 only, and lists the vote recipients under Match details. Historical games retain their existing three-column line-ups.
+
+## MVP vote breakdown (V22)
+
+Directly below the full-width 2026/27 MVP line graph, a **Vote Breakdown** table lists every player with at least one MVP vote. Each row includes the player's portrait (or lavender initials fallback), plus votes received in **Warkworth Mixed**, **Hibiscus Coast Mens**, **Hibiscus Coast Mixed**, and the **Total** across all three competitions. Rows are ranked by total votes and can be selected to open the player profile.
+
+Both the graph and table derive their points automatically from `mvpVotesByMatch`, so adding vote counts to a match in `data.json` and `data.js` updates both. The season's competition selector does not filter the MVP race. A dash indicates no vote **recorded** for that competition; matches with voting still pending remain uncounted. The table automatically grows as new vote recipients and match results are entered.
+
+V22 changes only `app.js` and `style.css`; all 13 player image files and match data remain unchanged.
+
+## Match-list MOTM portraits (V23)
+
+Every completed match list now has the columns `DATE`, `OPPONENT`, `COMPETITION`, `MOTM`, `SCORE`. The new MOTM column uses the match record's official `players[].motm` value; it does **not** use cumulative MVP vote points. An award with no recorded recipient shows a dash, and one explicitly marked `motmStatus: 'unconfirmed'` displays `Pending`. If multiple players shared MOTM, their portraits appear together in the cell. Approved photos load from `images/players/`, while players without a photo show the usual lavender initials.
+
+This applies consistently to the Overview recent results, 2026/27 results, Match archive, highest-scoring matches, opponent history and player match history. V23 requires updating only `app.js` and `style.css` from the V22 website; match stats and player image assets did not change.
+
+
+## V25 — Player debut and 2026/27 shirt numbers
+
+Player profiles now show the player's **club debut**, calculated from their earliest *dated* appearance in the full match archive, not from the current season/competition filter. When players have two games on the same day, the debut date is shared rather than guessing an earlier kick-off. The appearance date updates automatically when older matches are added.
+
+The `shirtNumbersBySeason` object in `data.json` holds season-specific shirt numbers (currently 2026/27). Future seasons can be added as separate keys without overwriting history. The 2026/27 entries are Will Turner #1, Christian Collins #7, Cayden Steffener #11, Connagh Webb #14, Fabiano Jesus #20, William Healey #23, Connor Passingham #26, Oliver Graham #30, Max Boundy #49, Jamison Lawrence #56, Jesse Attwood #64 and Taj Oliver #99. Players without supplied shirt numbers show **Not recorded**.
+
+To update from V24, replace `app.js`, `style.css`, `data.js`, `data.json` and `build_data.py`. `README.md` is updated documentation (optional).

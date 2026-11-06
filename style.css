@@ -636,3 +636,15 @@ img{max-width:100%}
  .match-motm-photo{width:48px;height:48px}
  .match-motm-photos.match-motm-multiple .match-motm-photo{width:32px;height:32px}
 }
+
+
+/* V25 — First recorded club appearance and season-specific shirt number. */
+.profile-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 22px;max-width:750px}
+.profile-fact{min-width:0;background:linear-gradient(155deg,#fff 0%,#f8f4fd 100%);border:2px solid #bcadd1;border-top:5px solid #7d4bad;border-radius:3px;box-shadow:3px 3px 0 rgba(74,47,112,.13);padding:15px 18px 13px}
+.profile-fact-label{font:800 11px/1.15 'Roboto Mono',monospace;letter-spacing:1px;color:#704f91}
+.profile-fact-value{font:900 clamp(22px,2.7vw,34px)/1.1 'Barlow Condensed',Impact,sans-serif;color:#331351;margin:7px 0 5px;overflow-wrap:anywhere}
+.profile-fact-jersey{font-size:clamp(34px,3.8vw,49px);color:#68349b;line-height:.96}
+.profile-hash{font-size:.62em;vertical-align:12%;margin-right:2px;color:#9470bb}
+.profile-fact-note{font:600 11px/1.4 'DM Sans',system-ui,sans-serif;color:#756580}
+@media(max-width:760px){.profile-facts{gap:9px;margin-top:-3px;margin-bottom:17px}.profile-fact{padding:12px 11px}.profile-fact-label{font-size:9px;letter-spacing:.45px}.profile-fact-value{font-size:clamp(20px,4.5vw,28px)}.profile-fact-jersey{font-size:clamp(30px,8vw,41px)}.profile-fact-note{font-size:10px}}
+@media(max-width:340px){.profile-facts{grid-template-columns:1fr}}

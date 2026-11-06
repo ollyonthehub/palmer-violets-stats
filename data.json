@@ -2186,12 +2186,11 @@
       "gf": 14,
       "ga": 3,
       "ownGoals": 0,
-      "motmStatus": "unconfirmed",
       "players": [
         {
           "name": "Cayden Steffener",
           "goals": 6,
-          "motm": 0
+          "motm": 1
         },
         {
           "name": "Connor Passingham",
@@ -2246,10 +2245,10 @@
       ]
     }
   ],
-  "lastUpdated": "2026-11-05",
+  "lastUpdated": "2026-11-06",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
-    "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; MOTM still unconfirmed.",
+    "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
     "HOTShots goalkeeper excluded from named appearance totals.",
     "Will Turner did not play vs Running on Prosecco; 11 recorded appearances in that match.",
     "2026/27 MVP voting: 1 vote = 1 point; cumulative points combine all competitions.",
@@ -2297,6 +2296,22 @@
       "Connor Passingham": 5,
       "Fabiano Jesus": 4,
       "Cayden Steffener": 2
+    }
+  },
+  "shirtNumbersBySeason": {
+    "2026/27": {
+      "Will Turner": 1,
+      "Christian Collins": 7,
+      "Cayden Steffener": 11,
+      "Connagh Webb": 14,
+      "Fabiano Jesus": 20,
+      "William Healey": 23,
+      "Connor Passingham": 26,
+      "Oliver Graham": 30,
+      "Max Boundy": 49,
+      "Jamison Lawrence": 56,
+      "Jesse Attwood": 64,
+      "Taj Oliver": 99
     }
   }
 }

@@ -2243,9 +2243,127 @@
           "motm": 0
         }
       ]
+    },
+    {
+      "id": "26-3",
+      "season": "2026/27",
+      "competition": "Hibiscus Coast Mixed",
+      "phase": "League",
+      "date": "2026-11-13",
+      "opponent": "West Orewa Knights",
+      "opponentId": "West Orewa Knights",
+      "gf": 5,
+      "ga": 0,
+      "ownGoals": 0,
+      "players": [
+        {
+          "name": "Christian Collins",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Cayden Steffener",
+          "goals": 3,
+          "motm": 1
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Jamison Lawrence",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Connagh Webb",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Taj Oliver",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Max Boundy",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "William Healey",
+          "goals": 0,
+          "motm": 0
+        }
+      ]
+    },
+    {
+      "id": "26-4",
+      "season": "2026/27",
+      "competition": "Hibiscus Coast Mens",
+      "phase": "League",
+      "date": "2026-11-13",
+      "opponent": "Optimate Me",
+      "opponentId": "Optimate Me",
+      "gf": 12,
+      "ga": 1,
+      "ownGoals": 0,
+      "players": [
+        {
+          "name": "Cayden Steffener",
+          "goals": 4,
+          "motm": 1
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Jamison Lawrence",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 3,
+          "motm": 0
+        },
+        {
+          "name": "Connagh Webb",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Taj Oliver",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Max Boundy",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "William Healey",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Christian Collins",
+          "goals": 3,
+          "motm": 1
+        }
+      ]
     }
   ],
-  "lastUpdated": "2026-11-06",
+  "lastUpdated": "2026-11-13",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
@@ -2253,7 +2371,10 @@
     "Will Turner did not play vs Running on Prosecco; 11 recorded appearances in that match.",
     "2026/27 MVP voting: 1 vote = 1 point; cumulative points combine all competitions.",
     "Hibiscus Coast Mens vs Rushed Intercourse on 16 Oct 2026: Connor Passingham 5, Fabiano Jesus 4, Cayden Steffener 2.",
-    "Hibiscus Coast Mixed vs Running on Prosecco MVP voting remains pending; no zeros have been assumed."
+    "Hibiscus Coast Mixed vs Running on Prosecco MVP voting remains pending; no zeros have been assumed.",
+    "13 November 2026 HBC Mixed vs West Orewa Knights: 5–0; Cayden Steffener MOTM. Separate MVP voting not supplied and remains pending.",
+    "13 November 2026 HBC Mens vs Optimate Me: 12–1; Christian Collins and Cayden Steffener share MOTM with 5 votes each. MVP votes Christian 5, Cayden 5, William Healey 1, Connor Passingham 1. Original scorer label “Cp” recorded as Connor Passingham.",
+    "The 13 November fixtures have been completed and moved into results; no upcoming fixtures currently recorded."
   ],
   "awards": {
     "2024/25": {
@@ -2275,27 +2396,18 @@
       "goalOfTheSeason": null
     }
   },
-  "upcomingFixtures": [
-    {
-      "id": "up-2026-11-06-hbcm",
-      "date": "2026-11-06",
-      "season": "2026/27",
-      "competition": "Hibiscus Coast Mens",
-      "opponent": "Let's Get Messi"
-    },
-    {
-      "id": "up-2026-11-06-hbcmixed",
-      "date": "2026-11-06",
-      "season": "2026/27",
-      "competition": "Hibiscus Coast Mixed",
-      "opponent": "Bare Biscuits"
-    }
-  ],
+  "upcomingFixtures": [],
   "mvpVotesByMatch": {
     "26-1": {
       "Connor Passingham": 5,
       "Fabiano Jesus": 4,
       "Cayden Steffener": 2
+    },
+    "26-4": {
+      "Christian Collins": 5,
+      "Cayden Steffener": 5,
+      "William Healey": 1,
+      "Connor Passingham": 1
     }
   },
   "shirtNumbersBySeason": {

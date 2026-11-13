@@ -1,7 +1,7 @@
 from artifact_tool import Blob,SpreadsheetFile
 from datetime import datetime,timedelta
 import json,os,re
-D='/mnt/data/palmer-violets-site'; matches=[]
+D=os.path.dirname(os.path.abspath(__file__)); matches=[]
 def ds(v):
  if isinstance(v,(float,int)):return (datetime(1899,12,30)+timedelta(days=v)).strftime('%Y-%m-%d')
  if isinstance(v,str):return v[:10]
@@ -35,6 +35,9 @@ read('/mnt/data/Palmer_Violets_2025_26_HBC_Mens.xlsx',5,5,'25')
 matches.extend([
  {'id':'26-1','season':'2026/27','competition':"Hibiscus Coast Mens",'phase':'League','date':'2026-10-16','opponent':'Rushed Intercourse','opponentId':'Rushed Intercourse','gf':4,'ga':2,'ownGoals':0,'players':[{'name':n,'goals':g,'motm':int(n=='Connor Passingham')} for n,g in [('Christian Collins',1),('Cayden Steffener',2),('Connor Passingham',1),('Jamison Lawrence',0),('Fabiano Jesus',0),('Oliver Graham',0),('Connagh Webb',0),('Taj Oliver',0),('Max Boundy',0),('William Healey',0)]]},
  {'id':'26-2','season':'2026/27','competition':'Hibiscus Coast Mixed','phase':'League','date':'2026-10-16','opponent':'Running on Prosecco','opponentId':'Running on Prosecco','gf':14,'ga':3,'ownGoals':0,'players':[{'name':n,'goals':g,'motm':int(n=='Cayden Steffener')} for n,g in [('Cayden Steffener',6),('Connor Passingham',2),('Jamison Lawrence',2),('Fabiano Jesus',2),('Connagh Webb',1),('Taj Oliver',1),('Max Boundy',0),('William Healey',0),('Oliver Graham',0),('Niva Smith',0),('Sophia Barnett',0)]]}
+,
+ {'id':'26-3','season':'2026/27','competition':'Hibiscus Coast Mixed','phase':'League','date':'2026-11-13','opponent':'West Orewa Knights','opponentId':'West Orewa Knights','gf':5,'ga':0,'ownGoals':0,'players':[{'name':n,'goals':g,'motm':int(n=='Cayden Steffener')} for n,g in [('Christian Collins',0),('Cayden Steffener',3),('Connor Passingham',0),('Jamison Lawrence',0),('Oliver Graham',0),('Connagh Webb',0),('Taj Oliver',1),('Max Boundy',1),('William Healey',0)]]},
+ {'id':'26-4','season':'2026/27','competition':'Hibiscus Coast Mens','phase':'League','date':'2026-11-13','opponent':'Optimate Me','opponentId':'Optimate Me','gf':12,'ga':1,'ownGoals':0,'players':[{'name':n,'goals':g,'motm':int(n in ('Christian Collins','Cayden Steffener'))} for n,g in [('Cayden Steffener',4),('Connor Passingham',1),('Jamison Lawrence',0),('Oliver Graham',3),('Connagh Webb',0),('Taj Oliver',1),('Max Boundy',0),('William Healey',0),('Christian Collins',3)]]}
 ])
 # integrity reports
 for season in ['2024/25','2025/26','2026/27']:
@@ -52,10 +55,10 @@ if os.path.exists(current_path):
  except (OSError, ValueError):
   previous = {}
 
-mvpVotesByMatch = {'26-1': {'Connor Passingham':5, 'Fabiano Jesus':4, 'Cayden Steffener':2}}
+mvpVotesByMatch = {'26-1': {'Connor Passingham':5, 'Fabiano Jesus':4, 'Cayden Steffener':2}, '26-4': {'Christian Collins':5, 'Cayden Steffener':5, 'William Healey':1, 'Connor Passingham':1}}
 payload = {
  'matches':matches,
- 'lastUpdated':'2026-11-06',
+ 'lastUpdated':'2026-11-13',
  'notes': previous.get('notes', [
   'Read-only public statistics. Source data updated through audited records.',
   'Hibiscus Coast Mixed Running on Prosecco: 16 October 2026; Cayden Steffener confirmed MOTM.'

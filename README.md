@@ -57,7 +57,7 @@ V5 branding update: official provided Palmer Violets circular badge replaces the
 ## Upcoming fixtures
 Upcoming fixtures are read-only and defined in `data.json` / `data.js` under `upcomingFixtures`. The Overview and Match Archive show their fixture cards; they do not affect completed-match statistics. If the opponent exists in the historical match database, an H2H summary appears. If there is no prior record, no H2H summary is displayed.
 
-Current upcoming fixtures: 6 November 2026 — HBC Men’s vs Let’s Get Messi; HBC Mixed vs Bare Biscuits. Kick-off times have not been supplied.
+Current upcoming fixtures (13 November 2026): none recorded. The 13 November matches have been completed, and the previously cancelled 6 November fixtures were removed.
 
 
 ## V12 — Responsive / QA pass (4 November 2026)
@@ -147,3 +147,16 @@ The player profile now shows a small illustrated **back of the 2026/27 Palmer Vi
 Added **Blake Boundy #27** and **Tom Barnett #8** to the season-specific mapping. Existing twelve numbers and all historical match records remain as before. If a player has no 2026/27 number recorded, the profile continues to indicate that no number has been recorded.
 
 **GitHub update from V25:** replace `app.js`, `style.css`, `data.js`, and `data.json`; upload the whole new `images/shirts/2026-27/` folder (14 WebP files). `README.md` is documentation only. No changes to the player portraits or match stats.
+
+
+## V28 — Week 2 2026/27 results (13 November 2026)
+
+Two fixtures from the prior upcoming schedule are now completed and recorded as `26-3` and `26-4`. Upcoming entries for 13 November were removed.
+
+- **Hibiscus Coast Mixed vs West Orewa Knights:** 5–0 win; 9 players; goals Cayden Steffener ×3, Max Boundy ×1, Taj Oliver ×1. Cayden official MOTM. MVP **votes not supplied**, so `26-3` is absent from `mvpVotesByMatch`.
+- **Hibiscus Coast Mens vs Optimate Me:** 12–1 win; 9 players; goals Cayden ×4, Oliver Graham ×3, Christian Collins ×3, Connor Passingham ×1, Taj Oliver ×1. MVP votes Christian ×5, Cayden ×5, William Healey ×1, Connor ×1 (12 total). Christian and Cayden were equal leading vote recipients and both have `motm:1` for the match (shared MOTM).
+- Original scorer shorthand **“Cp x1”** has been expanded to **Connor Passingham ×1**.
+- All player appearances, goals and awards derive from the two new match entries and update existing leaderboards, player profiles, match archive, Records and current-season statistics automatically. The MVP chart and breakdown derive from `mvpVotesByMatch`.
+- Source builder `build_data.py` updated to preserve these 2026/27 results on data regeneration (requires the original historical XLSX inputs).
+
+**GitHub update from V27:** Replace `data.json`, `data.js` and `app.js` (the latter removes an outdated “two fixtures so far” sentence on the Seasons page). Update `build_data.py` too if you retain the source builder in your repository. No image, HTML or stylesheet change is required.

@@ -16,6 +16,32 @@ function recordedDebut(name){
  if(!appearances.length)return null;
  return appearances.reduce((earliest,m)=>m.date<earliest.date?m:earliest);
 }
+// The goal-drought stat always uses the full recorded archive, independent of filters.
+// A match only counts when the player has at least one recorded goal.
+function mostRecentGoalMatch(name){
+ const scoring=matches.filter(m=>m.date&&m.players.some(p=>p.name===name&&Number(p.goals)>0));
+ if(!scoring.length)return null;
+ const lastDate=scoring.reduce((latest,m)=>m.date>latest?m.date:latest,scoring[0].date);
+ // Multiple games can be recorded on one date with no verified kickoff order.
+ // Include every opponent scored against that day rather than guessing which was last.
+ return {date:lastDate,opponents:[...new Set(scoring.filter(m=>m.date===lastDate).map(m=>m.opponent))]};
+}
+// Count calendar days in New Zealand, rather than 24-hour periods, so daylight-saving
+// changes and the viewer's computer timezone cannot create off-by-one results.
+function daysSinceNZ(date){
+ const dateParts=new Intl.DateTimeFormat('en-NZ',{timeZone:'Pacific/Auckland',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ const part=type=>Number(dateParts.find(p=>p.type===type).value);
+ const today=Date.UTC(part('year'),part('month')-1,part('day'));
+ const [year,month,day]=date.split('-').map(Number);
+ return Math.max(0,Math.round((today-Date.UTC(year,month-1,day))/86400000));
+}
+function goalDroughtMetric(name){
+ const last=mostRecentGoalMatch(name);
+ const hasUndatedScoredGoal=matches.some(m=>!m.date&&m.players.some(p=>p.name===name&&Number(p.goals)>0));
+ const label='Days since last goal';
+ if(!last)return metric(label,'—',hasUndatedScoredGoal?'Goal date not recorded':'No goals recorded');
+ return metric(label,daysSinceNZ(last.date),`Last scored ${esc(fmtDate(last.date))} · ${last.opponents.map(esc).join(' & ')}`);
+}
 function playerProfileFacts(name){
  const debut=recordedDebut(name);
  const number=db.shirtNumbersBySeason?.['2026/27']?.[name];
@@ -96,12 +122,13 @@ function leaderboardPanel(players, field, heading, emptyText='No statistics reco
   ${rows?`<ol class="leader-list">${rows}</ol>`:`<div class="leader-empty">${esc(emptyText)}</div>`}
  </section>`;
 }
-// Match-by-match MVP votes, independent from MOTM awards. Unreported matches stay pending.
+// Only Hibiscus Coast Mens matches award MVP vote points; mixed matches award a chosen MOTM only.
+// Missing Men's vote records remain pending, independently from official MOTM awards.
 const mvpResults=db.mvpVotesByMatch||{};
-function mvpResult(m){return Object.prototype.hasOwnProperty.call(mvpResults,m.id)?mvpResults[m.id]:null}
+function mvpResult(m){return m.competition==='Hibiscus Coast Mens'&&Object.prototype.hasOwnProperty.call(mvpResults,m.id)?mvpResults[m.id]:null}
 function mvpWeekKey(date){const d=new Date(date+'T12:00:00Z');const day=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-day);return d.toISOString().slice(0,10)}
 function mvpSeries(){
- const games=matches.filter(m=>m.season==='2026/27'&&m.date&&mvpResult(m)!==null).sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
+ const games=matches.filter(m=>m.season==='2026/27'&&m.competition==='Hibiscus Coast Mens'&&m.date&&mvpResult(m)!==null).sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
  const byWeek=new Map();
  for(const m of games){const k=mvpWeekKey(m.date);if(!byWeek.has(k))byWeek.set(k,{key:k,lastDate:m.date,votes:{},games:[]});const week=byWeek.get(k);week.lastDate=m.date;week.games.push(m);for(const [name,amount] of Object.entries(mvpResult(m))){week.votes[name]=(week.votes[name]||0)+amount}}
  const weeks=[...byWeek.values()].sort((a,b)=>a.key.localeCompare(b.key));
@@ -139,41 +166,14 @@ function mvpSvg(series,compact=false){
  }).join('');
  return `<svg class="mvp-chart-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cumulative MVP points by week: ${esc(players.map(p=>p.name+' '+p.total).join(', '))}"><rect x="0" y="0" width="${W}" height="${H}" fill="#fbf8ff"/>${grid}<line x1="${L}" y1="${T}" x2="${L}" y2="${B}" class="mvp-axis-line"/><line x1="${L}" y1="${B}" x2="${R}" y2="${B}" class="mvp-axis-line"/>${lines}${labs}</svg>`;
 }
-// Recorded 2026/27 voting split by competition. Both the graph and this table
-// read the same mvpVotesByMatch source; games awaiting votes never count as zero.
-function mvpVoteBreakdown(){
- const competitions=comps.slice(1);
- const votesByPlayer=new Map();
- for(const match of matches){
-  if(match.season!=='2026/27'||!competitions.includes(match.competition))continue;
-  const votes=mvpResult(match);
-  if(votes===null)continue;
-  for(const [name,value] of Object.entries(votes)){
-   const points=Number(value);
-   if(!Number.isFinite(points)||points<=0)continue;
-   if(!votesByPlayer.has(name))votesByPlayer.set(name,{name,byComp:Object.fromEntries(competitions.map(c=>[c,0])),total:0});
-   const player=votesByPlayer.get(name);
-   player.byComp[match.competition]+=points;
-   player.total+=points;
-  }
- }
- const players=[...votesByPlayer.values()].sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name,undefined,{sensitivity:'base'}));
- const totals=Object.fromEntries(competitions.map(c=>[c,0]));
- for(const player of players)for(const comp of competitions)totals[comp]+=player.byComp[comp];
- const grandTotal=players.reduce((sum,p)=>sum+p.total,0);
- const dataCell=(value,isTotal=false)=>`<td class="mvp-vote-value${isTotal?' mvp-vote-total':''}" aria-label="${value} ${value===1?'vote':'votes'}">${value?value:'—'}</td>`;
- const rows=players.map((player,i)=>`<tr class="mvp-vote-row"><td><button type="button" class="mvp-vote-person" data-player="${esc(player.name)}" aria-label="View ${esc(displayPlayerName(player.name))}'s player profile"><span class="mvp-vote-avatar">${portraitHTML(player.name)}</span><span class="mvp-vote-name">${esc(displayPlayerName(player.name))}</span></button></td>${competitions.map(comp=>dataCell(player.byComp[comp])).join('')}${dataCell(player.total,true)}</tr>`).join('');
- const totalRow=`<tr class="mvp-vote-footer"><th scope="row">TOTAL RECORDED</th>${competitions.map(comp=>`<td>${totals[comp]||'—'}</td>`).join('')}<td>${grandTotal}</td></tr>`;
- return `<section class="panel mvp-breakdown-panel" aria-label="2026/27 MVP votes by competition"><div class="mvp-breakdown-heading"><div><span class="mvp-breakdown-kicker">ALL COMPETITIONS · 2026/27</span><h3>Vote Breakdown</h3></div><span class="mvp-breakdown-badge">${players.length} ${players.length===1?'PLAYER':'PLAYERS'} WITH VOTES</span></div><div class="mvp-breakdown-tablewrap"><table class="mvp-breakdown-table"><colgroup><col class="mvp-vote-playercol"><col span="4" class="mvp-vote-numcol"></colgroup><thead><tr><th scope="col">PLAYER</th><th scope="col" title="Warkworth Mixed">WW<small>MIXED</small></th><th scope="col" title="Hibiscus Coast Mens">HBC<small>MEN'S</small></th><th scope="col" title="Hibiscus Coast Mixed">HBC<small>MIXED</small></th><th scope="col" class="mvp-vote-total">TOTAL</th></tr></thead><tbody>${rows||'<tr><td colspan="5" class="mvp-vote-empty">No votes have been recorded yet.</td></tr>'}</tbody><tfoot>${totalRow}</tfoot></table></div><p class="mvp-breakdown-footnote">Recorded MOTM votes only. A dash means no votes recorded for that player in that competition; matches awaiting voting are excluded. Select a player to view their profile.</p></section>`;
-}
 function mvpTracker(){
  const {players,weeks,games}=mvpSeries();
- const pending=matches.filter(m=>m.season==='2026/27'&&mvpResult(m)===null).length;
+ const pending=matches.filter(m=>m.season==='2026/27'&&m.competition==='Hibiscus Coast Mens'&&mvpResult(m)===null).length;
  if(!players.length) return `${sectionHeading('MVP Tracker')}<div class="panel panel-pad">No MVP votes recorded yet. Players will appear here after their first vote.</div>`;
  const colours=['#AE791D','#7433B3','#118B91','#C74F79','#3979B7','#879331','#A64D31','#C47B37'];
  const totalVotes=players.reduce((s,p)=>s+p.total,0);
  const legend=players.map((p,i)=>`<button class="mvp-person" type="button" data-player="${esc(p.name)}" aria-label="View ${esc(displayPlayerName(p.name))}'s profile"><span class="mvp-portrait" style="--mvp-player-colour:${colours[i%colours.length]}">${portraitHTML(p.name)}</span><span class="mvp-person-name">${esc(displayPlayerName(p.name))}</span><span class="mvp-person-score">${p.total} <small>pts</small></span></button>`).join('');
- return `<section class="mvp-tracker" aria-label="2026/27 MVP points tracker"><div class="mvp-section-heading"><div><div class="eyebrow">PLAYER OF THE YEAR RACE</div><h2>MVP Tracker<span class="mvp-spark">★</span></h2><p>Cumulative matchday votes · All 2026/27 competitions combined</p></div><div class="mvp-stamp"><strong>${totalVotes}</strong><span>VOTES RECORDED</span></div></div><div class="panel mvp-chart-panel"><div class="mvp-chart-head"><span>2026/27 MVP POINTS OVER TIME</span><span>${games.length} ${games.length===1?'MATCH':'MATCHES'} WITH VOTES</span></div><div class="mvp-chart-wide">${mvpSvg({players,weeks},false)}</div><div class="mvp-chart-compact">${mvpSvg({players,weeks},true)}</div><div class="mvp-chart-legend">${legend}</div><p class="mvp-footnote">Each MOTM vote is worth 1 MVP point. Lines show cumulative totals, grouped by match week. Only players who have received at least one vote appear.${pending?` Voting still to be recorded for ${pending} ${pending===1?'match':'matches'}; those votes are not treated as zero.`:''}</p></div>${mvpVoteBreakdown()}</section>`;
+ return `<section class="mvp-tracker" aria-label="2026/27 MVP points tracker"><div class="mvp-section-heading"><div><div class="eyebrow">PLAYER OF THE YEAR RACE</div><h2>MVP Tracker<span class="mvp-spark">★</span></h2><p>Cumulative MOTM votes · Hibiscus Coast Men’s only</p></div><div class="mvp-stamp"><strong>${totalVotes}</strong><span>VOTES RECORDED</span></div></div><div class="panel mvp-chart-panel"><div class="mvp-chart-head"><span>2026/27 MVP POINTS OVER TIME</span><span>${games.length} ${games.length===1?'MATCH':'MATCHES'} WITH VOTES</span></div><div class="mvp-chart-wide">${mvpSvg({players,weeks},false)}</div><div class="mvp-chart-compact">${mvpSvg({players,weeks},true)}</div><div class="mvp-chart-legend">${legend}</div><p class="mvp-footnote">Only Hibiscus Coast Men’s matches use MVP voting. Every vote earns 1 point. Mixed matches award a chosen MOTM but no vote points. Lines show cumulative points by week; players appear after their first vote.${pending?` Voting pending for ${pending} HBC Men’s ${pending===1?'match':'matches'}; those points are not assumed to be zero.`:''}</p></div></section>`;
 }
 function currentSeasonPage(){
  const currentSeason='2026/27';
@@ -198,7 +198,7 @@ function matchDetail(m){
  const scorersHTML=scorers.length?`<ul class="scorer-list">${scorers.join('')}</ul>`:'<p class="lineup-empty">No Palmer Violets goals in this match</p>';
  const motmHTML=m.motmStatus==='unconfirmed'?'<strong>Not confirmed</strong>':motm.length?`<div class="match-motm-list">${motm.map(p=>compactPlayer(p.name,'','motm-person')).join('')}</div>`:'<strong>None awarded</strong>';
  const ordered=[...m.players].sort((a,b)=>b.goals-a.goals||a.name.localeCompare(b.name));
- const showMvp=m.season==='2026/27';
+ const showMvp=m.season==='2026/27'&&m.competition==='Hibiscus Coast Mens';
  const voting=mvpResult(m);
  const lineupHTML=ordered.map(p=>`<li class="lineup-entry${showMvp?' lineup-with-mvp':''}"><div class="lineup-player">${compactPlayer(p.name)}</div><span class="lineup-number${p.goals?' has-goals':''}" aria-label="${p.goals} goals">${p.goals||'—'}</span><span class="lineup-number${p.motm?' has-motm':''}" aria-label="${p.motm?'MOTM award':'No MOTM award'}">${p.motm?'★':'—'}</span>${showMvp?`<span class="lineup-number${voting&&voting[p.name]?' has-mvp':''}" aria-label="${voting?((voting[p.name]||0)+' MVP points'):'MVP votes pending'}">${voting?(voting[p.name]||'—'):'—'}</span>`:''}</li>`).join('');
  const votesSorted=voting?Object.entries(voting).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])):[];
@@ -206,7 +206,7 @@ function matchDetail(m){
  return `<button class="back" data-back="matches">← Back to match archive</button><div class="eyebrow">${esc(m.competition)} <span>✦</span> ${esc(m.season)} ${m.phase==='Finals'?'· FINALS':''}</div><h1 class="headline">Palmer Violets <span class="vs">vs</span> ${esc(m.opponent)}</h1><p class="subtitle">${fmtDate(m.date)} · ${esc(m.phase)} phase</p><div class="panel panel-pad" style="margin-bottom:17px"><div class="result-header"><div><div class="muted mini">FULL TIME</div><div class="score-big">${m.gf} <span class="vs">–</span> ${m.ga}</div></div>${tag(m)}</div></div><div class="split"><div class="panel"><div class="panel-heading"><h3>Goalscorers</h3></div>${scorersHTML}</div><div class="panel"><div class="panel-heading"><h3>Match details</h3></div><div class="panel-pad"><div class="thin-label">MAN OF THE MATCH</div><div class="match-motm-field">${motmHTML}</div><div class="thin-label">RECORDED APPEARANCES</div><p><strong>${m.players.length}</strong></p>${mvpMatchSummary}<div class="thin-label">OPPONENT PROFILE</div><p><button class="back" style="margin:6px 0 0" data-opponent="${esc(m.opponentId)}">View head-to-head →</button></p></div></div></div>${sectionHeading('Match line-up')}<section class="panel lineup-panel" aria-label="Match line-up"><div class="lineup-header${showMvp?' lineup-with-mvp':''}"><span>PLAYER</span><span>GOALS</span><span>MOTM</span>${showMvp?'<span>MVP PTS</span>':''}</div><ul class="lineup-list">${lineupHTML}</ul></section>${showMvp&&!voting?'<p class="footnote">MVP voting for this game has not been recorded yet. Dashes do not mean zero votes.</p>':''}${m.motmStatus==='unconfirmed'?'<p class="footnote">MOTM is awaiting confirmation for this match.</p>':''}`;
 }
 function playerPage(){if(state.player){return playerDetail(state.player)}const ps=sortedPlayers(filtered(),'apps').filter(p=>(p.name+' '+displayPlayerName(p.name)).toLowerCase().includes(state.search.toLowerCase()));return `<div class="eyebrow">THE PEOPLE BEHIND THE NUMBERS</div><h1 class="headline">Player database<span style="color:var(--purple)">.</span></h1><p class="subtitle">Explore appearances, goals and MOTM awards. Select any player to see their season-by-season breakdown.</p>${filtersHTML(true)}<div class="player-grid">${ps.map(p=>`<button class="player-card" data-player="${esc(p.name)}" aria-label="Open ${esc(displayPlayerName(p.name))} player profile"><span class="player-art">${portraitHTML(p.name)}<span class="player-nameplate">${playerNameHTML(p.name)}</span></span><span class="player-card-info"><span class="player-status">${p.played.some(m=>m.season==='2026/27')?'2026/27 squad':'Club player'}</span><span class="player-stats"><span><b>${p.apps}</b> Apps</span><span><b>${p.goals}</b> Goals</span><span><b>${p.motm}</b> MOTM</span></span></span></button>`).join('')}</div>${ps.length?'':`<div class="empty">No players match those filters.</div>`}`}
-function playerDetail(name){const global=sortedPlayers(matches,'apps').find(p=>p.name===name);if(!global)return '<p>No player found.</p>';const ms=filtered().filter(m=>m.players.some(p=>p.name===name));const p=allPlayers(ms).find(player=>player.name===name)||{apps:0,goals:0,motm:0};const stats=seasons.slice(1).map(season=>{const pp=allPlayers(matches.filter(m=>m.season===season)).find(p=>p.name===name);return {season,...(pp||{apps:0,goals:0,motm:0})}});const breakdown=comps.slice(1).map(competition=>{const pp=allPlayers(matches.filter(m=>m.competition===competition)).find(p=>p.name===name);return {competition,...(pp||{apps:0,goals:0,motm:0})}});return `<button class="back" data-back="players">← All players</button><div class="detail-head"><div class="profile-portrait">${portraitHTML(name,true)}</div><div class="profile-heading"><div class="eyebrow">PLAYER PROFILE</div><h1>${playerNameHTML(name)}</h1><span class="muted">Palmer Violets FC</span></div></div>${playerProfileFacts(name)}${filtersHTML()}<div class="metrics">${metric('Appearances',p.apps)}${metric('Goals',p.goals)}${metric('MOTM awards',p.motm)}${metric('Goals / match',p.apps?(p.goals/p.apps).toFixed(2):'0.00')}</div><div class="split" style="margin-top:20px"><div class="panel"><div class="panel-heading"><h3>By season · All competitions</h3></div>${table(['SEASON','APPS','GOALS','MOTM'],stats.map(x=>`<tr><td><strong>${x.season}</strong></td><td class="numeric">${x.apps}</td><td class="numeric">${x.goals}</td><td class="numeric">${x.motm}</td></tr>`))}</div><div class="panel"><div class="panel-heading"><h3>By competition · All seasons</h3></div>${table(['COMPETITION','APPS','GOALS','MOTM'],breakdown.map(x=>`<tr><td><strong>${esc(x.competition)}</strong></td><td class="numeric">${x.apps}</td><td class="numeric">${x.goals}</td><td class="numeric">${x.motm}</td></tr>`))}</div></div>${sectionHeading('Match history')}<div class="panel">${matchTable([...ms].sort((a,b)=>(b.date||'0000').localeCompare(a.date||'0000')))}</div>`}
+function playerDetail(name){const global=sortedPlayers(matches,'apps').find(p=>p.name===name);if(!global)return '<p>No player found.</p>';const ms=filtered().filter(m=>m.players.some(p=>p.name===name));const p=allPlayers(ms).find(player=>player.name===name)||{apps:0,goals:0,motm:0};const stats=seasons.slice(1).map(season=>{const pp=allPlayers(matches.filter(m=>m.season===season)).find(p=>p.name===name);return {season,...(pp||{apps:0,goals:0,motm:0})}});const breakdown=comps.slice(1).map(competition=>{const pp=allPlayers(matches.filter(m=>m.competition===competition)).find(p=>p.name===name);return {competition,...(pp||{apps:0,goals:0,motm:0})}});return `<button class="back" data-back="players">← All players</button><div class="detail-head"><div class="profile-portrait">${portraitHTML(name,true)}</div><div class="profile-heading"><div class="eyebrow">PLAYER PROFILE</div><h1>${playerNameHTML(name)}</h1><span class="muted">Palmer Violets FC</span></div></div>${playerProfileFacts(name)}${filtersHTML()}<div class="metrics player-detail-metrics">${metric('Appearances',p.apps)}${metric('Goals',p.goals)}${metric('MOTM awards',p.motm)}${metric('Goals / match',p.apps?(p.goals/p.apps).toFixed(2):'0.00')}${goalDroughtMetric(name)}</div><div class="split" style="margin-top:20px"><div class="panel"><div class="panel-heading"><h3>By season · All competitions</h3></div>${table(['SEASON','APPS','GOALS','MOTM'],stats.map(x=>`<tr><td><strong>${x.season}</strong></td><td class="numeric">${x.apps}</td><td class="numeric">${x.goals}</td><td class="numeric">${x.motm}</td></tr>`))}</div><div class="panel"><div class="panel-heading"><h3>By competition · All seasons</h3></div>${table(['COMPETITION','APPS','GOALS','MOTM'],breakdown.map(x=>`<tr><td><strong>${esc(x.competition)}</strong></td><td class="numeric">${x.apps}</td><td class="numeric">${x.goals}</td><td class="numeric">${x.motm}</td></tr>`))}</div></div>${sectionHeading('Match history')}<div class="panel">${matchTable([...ms].sort((a,b)=>(b.date||'0000').localeCompare(a.date||'0000')))}</div>`}
 function records(){
  const ms=filtered();
  const rank=field=>allPlayers(ms).sort((a,b)=>b[field]-a[field]||a.name.localeCompare(b.name,undefined,{sensitivity:'base'})).slice(0,10);

@@ -2238,7 +2238,7 @@
           "motm": 0
         },
         {
-          "name": "Sophia Barnett",
+          "name": "Sofia Barnett",
           "goals": 0,
           "motm": 0
         }
@@ -2272,11 +2272,6 @@
           "motm": 0
         },
         {
-          "name": "Jamison Lawrence",
-          "goals": 0,
-          "motm": 0
-        },
-        {
           "name": "Oliver Graham",
           "goals": 0,
           "motm": 0
@@ -2298,6 +2293,11 @@
         },
         {
           "name": "William Healey",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Sofia Barnett",
           "goals": 0,
           "motm": 0
         }
@@ -2323,11 +2323,6 @@
         {
           "name": "Connor Passingham",
           "goals": 1,
-          "motm": 0
-        },
-        {
-          "name": "Jamison Lawrence",
-          "goals": 0,
           "motm": 0
         },
         {
@@ -2363,18 +2358,18 @@
       ]
     }
   ],
-  "lastUpdated": "2026-11-13",
+  "lastUpdated": "2026-11-15",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
     "HOTShots goalkeeper excluded from named appearance totals.",
     "Will Turner did not play vs Running on Prosecco; 11 recorded appearances in that match.",
-    "2026/27 MVP voting: 1 vote = 1 point; cumulative points combine all competitions.",
     "Hibiscus Coast Mens vs Rushed Intercourse on 16 Oct 2026: Connor Passingham 5, Fabiano Jesus 4, Cayden Steffener 2.",
-    "Hibiscus Coast Mixed vs Running on Prosecco MVP voting remains pending; no zeros have been assumed.",
-    "13 November 2026 HBC Mixed vs West Orewa Knights: 5–0; Cayden Steffener MOTM. Separate MVP voting not supplied and remains pending.",
     "13 November 2026 HBC Mens vs Optimate Me: 12–1; Christian Collins and Cayden Steffener share MOTM with 5 votes each. MVP votes Christian 5, Cayden 5, William Healey 1, Connor Passingham 1. Original scorer label “Cp” recorded as Connor Passingham.",
-    "The 13 November fixtures have been completed and moved into results; no upcoming fixtures currently recorded."
+    "The 13 November fixtures have been completed and moved into results; no upcoming fixtures currently recorded.",
+    "2026/27 MVP points are votes cast ONLY in Hibiscus Coast Mens games; each vote equals 1 point. Warkworth Mixed and Hibiscus Coast Mixed use a selected MOTM winner but have no MVP vote tallies.",
+    "MVP Vote Breakdown table has been intentionally removed from the current season page; full-width cumulative line graph is retained.",
+    "15 November 2026 Week 2 appearance audit: Jamison Lawrence did not appear against West Orewa Knights or Optimate Me; Sofia Barnett appeared against West Orewa Knights. HBC Mixed Week 2 has 9 players; HBC Mens Week 2 has 8. Sofia Barnett was also present in Week 1 vs Running on Prosecco (previous spelling Sophia corrected)."
   ],
   "awards": {
     "2024/25": {

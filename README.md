@@ -106,23 +106,22 @@ When adding new portraits, keep a square crop and add the relative path `images/
 The Overview, Records and 2026/27 leaderboards show the approved portrait from `images/players/`, or a lavender initials placeholder when no portrait exists, alongside player name and the relevant tally. The user-facing label for Joy Alinese is **Joy A.**; the canonical underlying name in the match data is preserved for historical continuity.
 
 
-## 2026/27 MVP tracker (V21)
+## 2026/27 MVP tracker (updated V29)
 
-An **MVP vote is one point**, separate from the official Man of the Match award. On the 2026/27 page the chart combines **all competitions** irrespective of the selected competition filter, and plots cumulative points by match week. Only players with at least one recorded vote appear.
+**MVP voting applies only to 2026/27 Hibiscus Coast Mens matches.** Every vote cast for MOTM is one MVP point. The official MOTM award is tracked separately. In Warkworth Mixed and Hibiscus Coast Mixed, one MOTM winner is selected but **no voting points exist**. Never label a Mixed fixture as awaiting MVP votes.
 
-Vote data lives in `data.json` at `mvpVotesByMatch`, and in the corresponding `window.PV_DATA` assignment in `data.js`. Each key is a match ID (such as `26-1`) whose value maps player names to vote counts. A missing match key means voting has **not been supplied**, not zero votes.
+The full-width cumulative MVP line graph on the 2026/27 page shows **Men's competition votes only**, irrespective of the selected competition filter. Only players with at least one vote appear. The chart auto-scales as points increase and groups vote totals by match week.
 
-Rushed Intercourse (16 October 2026): Connor Passingham 5, Fabiano Jesus 4, Cayden Steffener 2. Running on Prosecco votes have not yet been provided. The graph's y-axis automatically expands as cumulative votes increase, and future weekly data points append to each player's line.
+Votes are stored by Men's match ID under `mvpVotesByMatch` in `data.json` and `data.js`. For a Men's match, a missing entry means votes have not been reported (pending); a missing entry for a Mixed match is expected and not pending. Current records:
 
-The match detail page shows an additional MVP PTS column for 2026/27 only, and lists the vote recipients under Match details. Historical games retain their existing three-column line-ups.
+- 16 October 2026, Rushed Intercourse: Connor Passingham 5, Fabiano Jesus 4, Cayden Steffener 2.
+- 13 November 2026, Optimate Me: Christian Collins 5, Cayden Steffener 5, William Healey 1, Connor Passingham 1.
 
-## MVP vote breakdown (V22)
+Men's match details display the fourth `MVP PTS` line-up column and a vote summary. Mixed and historical match details display the original three columns (PLAYER, GOALS, MOTM), with no voting message. The official MOTM trophy remains counted normally across all competitions.
 
-Directly below the full-width 2026/27 MVP line graph, a **Vote Breakdown** table lists every player with at least one MVP vote. Each row includes the player's portrait (or lavender initials fallback), plus votes received in **Warkworth Mixed**, **Hibiscus Coast Mens**, **Hibiscus Coast Mixed**, and the **Total** across all three competitions. Rows are ranked by total votes and can be selected to open the player profile.
+### Vote Breakdown table (formerly V22)
 
-Both the graph and table derive their points automatically from `mvpVotesByMatch`, so adding vote counts to a match in `data.json` and `data.js` updates both. The season's competition selector does not filter the MVP race. A dash indicates no vote **recorded** for that competition; matches with voting still pending remain uncounted. The table automatically grows as new vote recipients and match results are entered.
-
-V22 changes only `app.js` and `style.css`; all 13 player image files and match data remain unchanged.
+The competition-by-competition Vote Breakdown table has been **removed** at the user's request in V29. The cumulative chart, player portraits and its legend remain. The voting data itself has been retained, so a breakdown can be reintroduced later if desired.
 
 ## Match-list MOTM portraits (V23)
 
@@ -153,10 +152,25 @@ Added **Blake Boundy #27** and **Tom Barnett #8** to the season-specific mapping
 
 Two fixtures from the prior upcoming schedule are now completed and recorded as `26-3` and `26-4`. Upcoming entries for 13 November were removed.
 
-- **Hibiscus Coast Mixed vs West Orewa Knights:** 5–0 win; 9 players; goals Cayden Steffener ×3, Max Boundy ×1, Taj Oliver ×1. Cayden official MOTM. MVP **votes not supplied**, so `26-3` is absent from `mvpVotesByMatch`.
+- **Hibiscus Coast Mixed vs West Orewa Knights:** 5–0 win; 9 players; goals Cayden Steffener ×3, Max Boundy ×1, Taj Oliver ×1. Cayden official MOTM. As a Mixed match, no MVP vote points are awarded; `26-3` correctly has no entry in `mvpVotesByMatch`.
 - **Hibiscus Coast Mens vs Optimate Me:** 12–1 win; 9 players; goals Cayden ×4, Oliver Graham ×3, Christian Collins ×3, Connor Passingham ×1, Taj Oliver ×1. MVP votes Christian ×5, Cayden ×5, William Healey ×1, Connor ×1 (12 total). Christian and Cayden were equal leading vote recipients and both have `motm:1` for the match (shared MOTM).
 - Original scorer shorthand **“Cp x1”** has been expanded to **Connor Passingham ×1**.
-- All player appearances, goals and awards derive from the two new match entries and update existing leaderboards, player profiles, match archive, Records and current-season statistics automatically. The MVP chart and breakdown derive from `mvpVotesByMatch`.
+- All player appearances, goals and awards derive from the two new match entries and update existing leaderboards, player profiles, match archive, Records and current-season statistics automatically. The MVP chart derives from the Men’s fixtures in `mvpVotesByMatch`.
 - Source builder `build_data.py` updated to preserve these 2026/27 results on data regeneration (requires the original historical XLSX inputs).
 
 **GitHub update from V27:** Replace `data.json`, `data.js` and `app.js` (the latter removes an outdated “two fixtures so far” sentence on the Seasons page). Update `build_data.py` too if you retain the source builder in your repository. No image, HTML or stylesheet change is required.
+
+## V29 — Men's-only MVP voting; breakdown removed
+
+The 2026/27 MVP chart is now labelled HBC Men’s only. The competition breakdown table is removed; the chart and legend are retained. Only Men's matches display MVP points in line-ups, and Mixed match pages never show “votes pending”. The existing 23 points remain unchanged. See the MVP tracker section above for the rules.
+
+**GitHub update from V28:** replace `app.js`, `style.css`, `data.js`, `data.json`, and optionally `README.md`. No images or `build_data.py` changes are required.
+
+
+## V31 — Week 2 appearance corrections (15 November 2026)
+
+- **HBC Mixed vs West Orewa Knights (`26-3`)**: Jamison Lawrence did **not** appear; Sofia Barnett **did** appear. Corrected total: **9** player appearances. No goals or MOTM changes.
+- **HBC Mens vs Optimate Me (`26-4`)**: Jamison Lawrence did **not** appear. Corrected total: **8** player appearances. No goals, MOTM, or MVP vote changes.
+- **Sofia Barnett** is the confirmed spelling, replacing the original `Sophia Barnett` in the 16 October Running on Prosecco match (`26-2`) so her two appearances aggregate under one player.
+- **Jamison Lawrence** now has 1 HBC Men’s and 1 HBC Mixed appearance in 2026/27 (2 total), both from Week 1. His 2 goals remain from Running on Prosecco.
+- **Deploy from V30:** Replace `data.js` and `data.json`. Update `build_data.py` as well to preserve these corrections when regenerating the database. No `app.js`, `style.css`, player portraits, or shirt graphics need changing.

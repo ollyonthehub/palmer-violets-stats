@@ -190,10 +190,9 @@ The upcoming fixtures database includes all **13** Warkworth Mixed fixtures from
 club's supplied Shoesmith Domain schedule (17 November 2026–19 January 2027).
 Each includes an exact kickoff time and field label (`SF1`–`SF7`).
 
-The two previously announced Hibiscus Coast fixtures for 20 November are retained,
-with verified kickoffs but no unverified field numbers. The later HBC schedule
-screenshots were not exposed as accessible file attachments in this update and
-**have not been guessed or added**.
+The two 20 November Hibiscus Coast fixtures were first retained without field numbers in V33.
+Those field numbers, plus an additional 27 November Mixed fixture, were verified
+against the screenshots in V34.
 
 Fixture head-to-head cards now recognise confirmed 2026/27 rebrands:
 - `Keep Fat '26` refers to the historical `Keep Fat` opponent.
@@ -203,3 +202,19 @@ Past match results and the historical displayed opponent names are unchanged.
 When recording a future result against these teams, use the existing historical
 `opponentId` to preserve combined head-to-head records. All existing match data,
 player statistics, awards and MVP voting remain unchanged.
+
+
+## V34 — HBC fixture times and fields (16 November 2026)
+
+The two user-supplied Hibiscus Coast screenshots confirm the following **Palmer Violets** fixtures at Stanmore Bay Park:
+
+| Date | Competition | Opponent | Kickoff | Field |
+|---|---|---|---|---|
+| 20 November 2026 | Hibiscus Coast Mens | Real Mid | 6:00pm | 4B |
+| 20 November 2026 | Hibiscus Coast Mixed | Bare Biscuits | 6:45pm | 2B |
+| 27 November 2026 | Hibiscus Coast Mixed | Coastie Sevens | 6:00pm | 2B |
+
+The unrelated HBC Mixed matches shown in the schedule screenshot were intentionally excluded.
+All **13** Warkworth Mixed fixtures from V33 are preserved unchanged, giving **16** upcoming fixtures total.
+The V33 fixture-card implementation already displays the venue, kickoff and field; no application/style updates are necessary.
+The 38-match archive, player stats, awards and 23 recorded MVP votes are unchanged.

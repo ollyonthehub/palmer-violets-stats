@@ -2419,7 +2419,8 @@
       "competition": "Hibiscus Coast Mens",
       "opponent": "Real Mid",
       "venue": "Stanmore Bay Park",
-      "kickoff": "6:00pm"
+      "kickoff": "6:00pm",
+      "field": "4B"
     },
     {
       "id": "up-2026-11-20-hbcmixed",
@@ -2428,7 +2429,8 @@
       "competition": "Hibiscus Coast Mixed",
       "opponent": "Bare Biscuits",
       "venue": "Stanmore Bay Park",
-      "kickoff": "6:45pm"
+      "kickoff": "6:45pm",
+      "field": "2B"
     },
     {
       "id": "up-2026-27-wwmixed-03",
@@ -2449,6 +2451,16 @@
       "venue": "Shoesmith Domain",
       "kickoff": "6:30pm",
       "field": "SF5"
+    },
+    {
+      "id": "up-2026-11-27-hbcmixed-coastie-sevens",
+      "date": "2026-11-27",
+      "season": "2026/27",
+      "competition": "Hibiscus Coast Mixed",
+      "opponent": "Coastie Sevens",
+      "venue": "Stanmore Bay Park",
+      "kickoff": "6:00pm",
+      "field": "2B"
     },
     {
       "id": "up-2026-27-wwmixed-05",

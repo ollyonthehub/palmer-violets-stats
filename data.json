@@ -2393,22 +2393,24 @@
   },
   "upcomingFixtures": [
     {
-      "id": "up-2026-11-17-wwmixed-1",
+      "id": "up-2026-27-wwmixed-01",
       "date": "2026-11-17",
       "season": "2026/27",
       "competition": "Warkworth Mixed",
       "opponent": "Shoesmith United",
       "venue": "Shoesmith Domain",
-      "kickoff": "5:45pm"
+      "kickoff": "5:45pm",
+      "field": "SF1"
     },
     {
-      "id": "up-2026-11-17-wwmixed-2",
+      "id": "up-2026-27-wwmixed-02",
       "date": "2026-11-17",
       "season": "2026/27",
       "competition": "Warkworth Mixed",
       "opponent": "Wirtz Case Scenario",
       "venue": "Shoesmith Domain",
-      "kickoff": "6:30pm"
+      "kickoff": "6:30pm",
+      "field": "SF6"
     },
     {
       "id": "up-2026-11-20-hbcmens",
@@ -2427,6 +2429,116 @@
       "opponent": "Bare Biscuits",
       "venue": "Stanmore Bay Park",
       "kickoff": "6:45pm"
+    },
+    {
+      "id": "up-2026-27-wwmixed-03",
+      "date": "2026-11-24",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Vardy's Party",
+      "venue": "Shoesmith Domain",
+      "kickoff": "5:45pm",
+      "field": "SF6"
+    },
+    {
+      "id": "up-2026-27-wwmixed-04",
+      "date": "2026-11-24",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "WWPEST",
+      "venue": "Shoesmith Domain",
+      "kickoff": "6:30pm",
+      "field": "SF5"
+    },
+    {
+      "id": "up-2026-27-wwmixed-05",
+      "date": "2026-12-01",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Welcome to BP",
+      "venue": "Shoesmith Domain",
+      "kickoff": "5:45pm",
+      "field": "SF2"
+    },
+    {
+      "id": "up-2026-27-wwmixed-06",
+      "date": "2026-12-01",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "First IX",
+      "venue": "Shoesmith Domain",
+      "kickoff": "6:30pm",
+      "field": "SF4"
+    },
+    {
+      "id": "up-2026-27-wwmixed-07",
+      "date": "2026-12-08",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "T-warriors",
+      "venue": "Shoesmith Domain",
+      "kickoff": "5:45pm",
+      "field": "SF3"
+    },
+    {
+      "id": "up-2026-27-wwmixed-08",
+      "date": "2026-12-08",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Straight Outta Warkworth",
+      "venue": "Shoesmith Domain",
+      "kickoff": "6:30pm",
+      "field": "SF7"
+    },
+    {
+      "id": "up-2026-27-wwmixed-09",
+      "date": "2026-12-15",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Frigate Boys",
+      "venue": "Shoesmith Domain",
+      "kickoff": "5:45pm",
+      "field": "SF7"
+    },
+    {
+      "id": "up-2026-27-wwmixed-10",
+      "date": "2026-12-15",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Keep Fat '26",
+      "venue": "Shoesmith Domain",
+      "kickoff": "6:30pm",
+      "field": "SF6"
+    },
+    {
+      "id": "up-2026-27-wwmixed-11",
+      "date": "2027-01-12",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "She Only XI",
+      "venue": "Shoesmith Domain",
+      "kickoff": "5:45pm",
+      "field": "SF5"
+    },
+    {
+      "id": "up-2026-27-wwmixed-12",
+      "date": "2027-01-12",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Oysters",
+      "venue": "Shoesmith Domain",
+      "kickoff": "6:30pm",
+      "field": "SF1"
+    },
+    {
+      "id": "up-2026-27-wwmixed-13",
+      "date": "2027-01-19",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Ushers",
+      "venue": "Shoesmith Domain",
+      "kickoff": "5:45pm",
+      "field": "SF4"
     }
   ],
   "mvpVotesByMatch": {

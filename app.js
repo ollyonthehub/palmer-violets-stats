@@ -85,12 +85,26 @@ function matchRow(m,detail=true){return `<tr ${detail?`class="rowclick" data-mat
 function matchTable(ms,empty='No results found'){
  return `<div class="match-results-table">${table(['DATE','OPPONENT','COMPETITION','MOTM','SCORE'],ms.map(m=>matchRow(m)),empty)}</div>`;
 }
-function fixtureCard(f){
- const historical=matches.filter(m=>m.opponentId.toLowerCase()===f.opponent.toLowerCase()||m.opponent.toLowerCase()===f.opponent.toLowerCase());
- const h=historical.length?totals(historical):null;
- return `<article class="fixture-card"><div class="fixture-top"><span class="fixture-comp">${esc(f.competition)}</span><span class="fixture-date">${esc(fmtDate(f.date))}</span></div><div class="fixture-match"><img src="logo.png" class="fixture-crest" alt="Palmer Violets badge"><div class="fixture-match-copy"><span class="fixture-label">UPCOMING FIXTURE</span><strong>Palmer Violets <span class="vs">vs</span> ${esc(f.opponent)}</strong></div></div>${f.venue||f.kickoff?`<div class="fixture-info">${f.venue?`<span>${esc(f.venue)}</span>`:''}${f.kickoff?`<span>${esc(f.kickoff)}</span>`:''}</div>`:''}${h?`<div class="fixture-history"><span>PREVIOUS MEETINGS</span><strong>${h.played} played · ${h.wins}W ${h.draws}D ${h.losses}L</strong><span>Goals: ${h.gf}–${h.ga}</span></div>`:''}</article>`;
+// Current opponent names can differ from the name in historical match results.
+// Alias only the two confirmed rebrands; the archive keeps the names used then.
+function canonicalFixtureOpponent(name){
+ const aliases={"Keep Fat '26":'Keep Fat',Oysters:'Matakana FC'};
+ return (aliases[name]||name).toLowerCase();
 }
-function upcomingSection(){const fixtures=upcoming.filter(f=>(state.season==='All seasons'||f.season===state.season)&&(state.competition==='All competitions'||f.competition===state.competition)).sort((a,b)=>a.date.localeCompare(b.date));return fixtures.length?`${sectionHeading('Upcoming fixtures')}<div class="fixture-grid">${fixtures.map(fixtureCard).join('')}</div>`:''}
+function kickoffOrder(f){
+ const m=String(f.kickoff||'').match(/^(\d{1,2}):(\d{2})(am|pm)$/i);
+ if(!m)return 2400;
+ return (Number(m[1])%12+(m[3].toLowerCase()==='pm'?12:0))*60+Number(m[2]);
+}
+function fixtureOrder(a,b){return a.date.localeCompare(b.date)||kickoffOrder(a)-kickoffOrder(b)||a.competition.localeCompare(b.competition)}
+function fixtureCard(f){
+ const opponentId=canonicalFixtureOpponent(f.opponent);
+ const historical=matches.filter(m=>canonicalFixtureOpponent(m.opponentId)===opponentId||canonicalFixtureOpponent(m.opponent)===opponentId);
+ const h=historical.length?totals(historical):null;
+ const details=[f.venue?`<span>${esc(f.venue)}</span>`:'',f.kickoff?`<span>${esc(f.kickoff)}</span>`:'',f.field?`<span class="fixture-field" title="Field">Field ${esc(f.field)}</span>`:''].join('');
+ return `<article class="fixture-card"><div class="fixture-top"><span class="fixture-comp">${esc(f.competition)}</span><span class="fixture-date">${esc(fmtDate(f.date))}</span></div><div class="fixture-match"><img src="logo.png" class="fixture-crest" alt="Palmer Violets badge"><div class="fixture-match-copy"><span class="fixture-label">UPCOMING FIXTURE</span><strong>Palmer Violets <span class="vs">vs</span> ${esc(f.opponent)}</strong></div></div>${details?`<div class="fixture-info">${details}</div>`:''}${h?`<div class="fixture-history"><span>PREVIOUS MEETINGS</span><strong>${h.played} played · ${h.wins}W ${h.draws}D ${h.losses}L</strong><span>Goals: ${h.gf}–${h.ga}</span></div>`:''}</article>`;
+}
+function upcomingSection(){const fixtures=upcoming.filter(f=>(state.season==='All seasons'||f.season===state.season)&&(state.competition==='All competitions'||f.competition===state.competition)).sort(fixtureOrder);return fixtures.length?`${sectionHeading('Upcoming fixtures')}<div class="fixture-grid">${fixtures.map(fixtureCard).join('')}</div>`:''}
 function rowPlayer(p,i){return `<tr class="rowclick" data-player="${esc(p.name)}"><td><span class="rank">${String(i+1).padStart(2,'0')}</span><strong>${esc(displayPlayerName(p.name))}</strong></td><td class="numeric">${p.apps}</td><td class="numeric"><strong>${p.goals}</strong></td><td class="numeric">${p.motm}</td></tr>`}
 function recordPlayerRow(p,i,field){
  const columns=field==='goals'?['goals','apps','motm']:field==='apps'?['apps','goals','motm']:['motm','apps','goals'];
@@ -178,7 +192,7 @@ function mvpTracker(){
 function currentSeasonPage(){
  const currentSeason='2026/27';
  const currentMatches=matches.filter(m=>m.season===currentSeason&&(state.currentCompetition==='All competitions'||m.competition===state.currentCompetition));
- const currentFixtures=upcoming.filter(f=>f.season===currentSeason&&(state.currentCompetition==='All competitions'||f.competition===state.currentCompetition)).sort((a,b)=>a.date.localeCompare(b.date));
+ const currentFixtures=upcoming.filter(f=>f.season===currentSeason&&(state.currentCompetition==='All competitions'||f.competition===state.currentCompetition)).sort(fixtureOrder);
  const t=totals(currentMatches);
  const sorted=[...currentMatches].sort((a,b)=>(b.date||'0000').localeCompare(a.date||'0000'));
  const rank=field=>allPlayers(currentMatches).filter(p=>p[field]>0).sort((a,b)=>b[field]-a[field]||a.name.localeCompare(b.name,undefined,{sensitivity:'base'})).slice(0,10);

@@ -618,3 +618,6 @@ img{max-width:100%}
 .fixture-info span{display:inline-flex;align-items:center;white-space:normal}
 .fixture-info span+span{color:#5c327e;font-weight:900}
 @media(max-width:390px){.fixture-info{margin-left:0;font-size:10px}}
+
+/* V33 — distinct compact field number in fixture details */
+.fixture-info .fixture-field{color:#4c2875;font-weight:900;letter-spacing:.02em}

@@ -182,3 +182,24 @@ The 2026/27 MVP chart is now labelled HBC Men’s only. The competition breakdow
 - **Friday 20 November · Stanmore Bay Park:** HBC Mens vs Real Mid (6:00pm) and HBC Mixed vs Bare Biscuits (6:45pm).
 - The 2026/27 page shows the four fixtures with their date, venue and kick-off. Fixtures are read-only and do not count towards recorded stats until results are supplied.
 - **Deploy from V31:** replace `data.json`, `data.js`, `app.js` and `style.css`. `README.md` is optional. Existing portraits, shirt illustrations, recorded results, MVP votes and awards remain intact.
+
+
+## V33 — Full Warkworth Mixed schedule and fixture fields (16 November 2026)
+
+The upcoming fixtures database includes all **13** Warkworth Mixed fixtures from the
+club's supplied Shoesmith Domain schedule (17 November 2026–19 January 2027).
+Each includes an exact kickoff time and field label (`SF1`–`SF7`).
+
+The two previously announced Hibiscus Coast fixtures for 20 November are retained,
+with verified kickoffs but no unverified field numbers. The later HBC schedule
+screenshots were not exposed as accessible file attachments in this update and
+**have not been guessed or added**.
+
+Fixture head-to-head cards now recognise confirmed 2026/27 rebrands:
+- `Keep Fat '26` refers to the historical `Keep Fat` opponent.
+- `Oysters` refers to the historical `Matakana FC` opponent.
+
+Past match results and the historical displayed opponent names are unchanged.
+When recording a future result against these teams, use the existing historical
+`opponentId` to preserve combined head-to-head records. All existing match data,
+player statistics, awards and MVP voting remain unchanged.

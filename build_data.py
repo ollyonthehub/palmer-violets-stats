@@ -58,7 +58,7 @@ if os.path.exists(current_path):
 mvpVotesByMatch = {'26-1': {'Connor Passingham':5, 'Fabiano Jesus':4, 'Cayden Steffener':2}, '26-4': {'Christian Collins':5, 'Cayden Steffener':5, 'William Healey':1, 'Connor Passingham':1}}
 payload = {
  'matches':matches,
- 'lastUpdated':'2026-11-15',
+ 'lastUpdated':'2026-11-16',
  'notes': previous.get('notes', [
   'Read-only public statistics. Source data updated through audited records.',
   'Hibiscus Coast Mixed Running on Prosecco: 16 October 2026; Cayden Steffener confirmed MOTM.'

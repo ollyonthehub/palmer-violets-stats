@@ -57,7 +57,7 @@ V5 branding update: official provided Palmer Violets circular badge replaces the
 ## Upcoming fixtures
 Upcoming fixtures are read-only and defined in `data.json` / `data.js` under `upcomingFixtures`. The Overview and Match Archive show their fixture cards; they do not affect completed-match statistics. If the opponent exists in the historical match database, an H2H summary appears. If there is no prior record, no H2H summary is displayed.
 
-Current upcoming fixtures (13 November 2026): none recorded. The 13 November matches have been completed, and the previously cancelled 6 November fixtures were removed.
+Current upcoming fixtures (16 November 2026): four fixtures on 17 and 20 November. The 13 November matches have been completed, and the previously cancelled 6 November fixtures were removed.
 
 
 ## V12 — Responsive / QA pass (4 November 2026)
@@ -174,3 +174,11 @@ The 2026/27 MVP chart is now labelled HBC Men’s only. The competition breakdow
 - **Sofia Barnett** is the confirmed spelling, replacing the original `Sophia Barnett` in the 16 October Running on Prosecco match (`26-2`) so her two appearances aggregate under one player.
 - **Jamison Lawrence** now has 1 HBC Men’s and 1 HBC Mixed appearance in 2026/27 (2 total), both from Week 1. His 2 goals remain from Running on Prosecco.
 - **Deploy from V30:** Replace `data.js` and `data.json`. Update `build_data.py` as well to preserve these corrections when regenerating the database. No `app.js`, `style.css`, player portraits, or shirt graphics need changing.
+
+
+## V32 — 2026/27 Week 3 upcoming fixtures (16 November 2026)
+
+- **Tuesday 17 November · Shoesmith Domain · Warkworth Mixed:** vs Shoesmith United (5:45pm) and Wirtz Case Scenario (6:30pm).
+- **Friday 20 November · Stanmore Bay Park:** HBC Mens vs Real Mid (6:00pm) and HBC Mixed vs Bare Biscuits (6:45pm).
+- The 2026/27 page shows the four fixtures with their date, venue and kick-off. Fixtures are read-only and do not count towards recorded stats until results are supplied.
+- **Deploy from V31:** replace `data.json`, `data.js`, `app.js` and `style.css`. `README.md` is optional. Existing portraits, shirt illustrations, recorded results, MVP votes and awards remain intact.

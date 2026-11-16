@@ -2358,7 +2358,7 @@
       ]
     }
   ],
-  "lastUpdated": "2026-11-15",
+  "lastUpdated": "2026-11-16",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
@@ -2366,10 +2366,10 @@
     "Will Turner did not play vs Running on Prosecco; 11 recorded appearances in that match.",
     "Hibiscus Coast Mens vs Rushed Intercourse on 16 Oct 2026: Connor Passingham 5, Fabiano Jesus 4, Cayden Steffener 2.",
     "13 November 2026 HBC Mens vs Optimate Me: 12–1; Christian Collins and Cayden Steffener share MOTM with 5 votes each. MVP votes Christian 5, Cayden 5, William Healey 1, Connor Passingham 1. Original scorer label “Cp” recorded as Connor Passingham.",
-    "The 13 November fixtures have been completed and moved into results; no upcoming fixtures currently recorded.",
     "2026/27 MVP points are votes cast ONLY in Hibiscus Coast Mens games; each vote equals 1 point. Warkworth Mixed and Hibiscus Coast Mixed use a selected MOTM winner but have no MVP vote tallies.",
     "MVP Vote Breakdown table has been intentionally removed from the current season page; full-width cumulative line graph is retained.",
-    "15 November 2026 Week 2 appearance audit: Jamison Lawrence did not appear against West Orewa Knights or Optimate Me; Sofia Barnett appeared against West Orewa Knights. HBC Mixed Week 2 has 9 players; HBC Mens Week 2 has 8. Sofia Barnett was also present in Week 1 vs Running on Prosecco (previous spelling Sophia corrected)."
+    "15 November 2026 Week 2 appearance audit: Jamison Lawrence did not appear against West Orewa Knights or Optimate Me; Sofia Barnett appeared against West Orewa Knights. HBC Mixed Week 2 has 9 players; HBC Mens Week 2 has 8. Sofia Barnett was also present in Week 1 vs Running on Prosecco (previous spelling Sophia corrected).",
+    "Upcoming 2026/27 Week 3 fixtures added on 16 November 2026: 17 Nov Warkworth Mixed vs Shoesmith United and Wirtz Case Scenario at Shoesmith Domain; 20 Nov HBC Mens vs Real Mid and HBC Mixed vs Bare Biscuits at Stanmore Bay Park. These fixtures are not counted in recorded match statistics until results are supplied."
   ],
   "awards": {
     "2024/25": {
@@ -2391,7 +2391,44 @@
       "goalOfTheSeason": null
     }
   },
-  "upcomingFixtures": [],
+  "upcomingFixtures": [
+    {
+      "id": "up-2026-11-17-wwmixed-1",
+      "date": "2026-11-17",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Shoesmith United",
+      "venue": "Shoesmith Domain",
+      "kickoff": "5:45pm"
+    },
+    {
+      "id": "up-2026-11-17-wwmixed-2",
+      "date": "2026-11-17",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "opponent": "Wirtz Case Scenario",
+      "venue": "Shoesmith Domain",
+      "kickoff": "6:30pm"
+    },
+    {
+      "id": "up-2026-11-20-hbcmens",
+      "date": "2026-11-20",
+      "season": "2026/27",
+      "competition": "Hibiscus Coast Mens",
+      "opponent": "Real Mid",
+      "venue": "Stanmore Bay Park",
+      "kickoff": "6:00pm"
+    },
+    {
+      "id": "up-2026-11-20-hbcmixed",
+      "date": "2026-11-20",
+      "season": "2026/27",
+      "competition": "Hibiscus Coast Mixed",
+      "opponent": "Bare Biscuits",
+      "venue": "Stanmore Bay Park",
+      "kickoff": "6:45pm"
+    }
+  ],
   "mvpVotesByMatch": {
     "26-1": {
       "Connor Passingham": 5,

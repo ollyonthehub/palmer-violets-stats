@@ -612,3 +612,9 @@ img{max-width:100%}
  .player-detail-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
  .player-detail-metrics .metric:last-child{grid-column:1/-1}
 }
+
+/* V32 fixture detail metadata: ground and kickoff time */
+.fixture-info{display:flex;flex-wrap:wrap;gap:6px 14px;margin:13px 0 0 66px;font:700 11px 'Roboto Mono',monospace;color:#735d85}
+.fixture-info span{display:inline-flex;align-items:center;white-space:normal}
+.fixture-info span+span{color:#5c327e;font-weight:900}
+@media(max-width:390px){.fixture-info{margin-left:0;font-size:10px}}

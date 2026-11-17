@@ -55,10 +55,17 @@ if os.path.exists(current_path):
  except (OSError, ValueError):
   previous = {}
 
+# Older season spreadsheets remain authoritative for 2024/25 and 2025/26.
+# Preserve the newer seasons' manually recorded matches (including all one-day
+# tournament entries) so a rebuild never silently discards results added on-site.
+if previous.get('matches'):
+ manual_matches = [m for m in previous['matches'] if m.get('season') not in ('2024/25','2025/26')]
+ matches = [m for m in matches if m.get('season') in ('2024/25','2025/26')] + manual_matches
+
 mvpVotesByMatch = {'26-1': {'Connor Passingham':5, 'Fabiano Jesus':4, 'Cayden Steffener':2}, '26-4': {'Christian Collins':5, 'Cayden Steffener':5, 'William Healey':1, 'Connor Passingham':1}}
 payload = {
  'matches':matches,
- 'lastUpdated':'2026-11-16',
+ 'lastUpdated':previous.get('lastUpdated',datetime.now().strftime('%Y-%m-%d')),
  'notes': previous.get('notes', [
   'Read-only public statistics. Source data updated through audited records.',
   'Hibiscus Coast Mixed Running on Prosecco: 16 October 2026; Cayden Steffener confirmed MOTM.'
@@ -66,7 +73,8 @@ payload = {
  'awards':previous.get('awards',{}),
  'upcomingFixtures':previous.get('upcomingFixtures',[]),
  'mvpVotesByMatch':previous.get('mvpVotesByMatch',mvpVotesByMatch),
- 'shirtNumbersBySeason':previous.get('shirtNumbersBySeason',{'2026/27':{}})
+ 'shirtNumbersBySeason':previous.get('shirtNumbersBySeason',{'2026/27':{}}),
+ 'tournaments':previous.get('tournaments',[])
 }
 with open(current_path,'w',encoding='utf-8') as f:json.dump(payload,f,indent=2,ensure_ascii=False)
 with open(os.path.join(D,'data.js'),'w',encoding='utf-8') as f:f.write('window.PV_DATA='+json.dumps(payload,ensure_ascii=False,separators=(',',':'))+';\n')

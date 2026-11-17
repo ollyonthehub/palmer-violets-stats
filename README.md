@@ -218,3 +218,35 @@ The unrelated HBC Mixed matches shown in the schedule screenshot were intentiona
 All **13** Warkworth Mixed fixtures from V33 are preserved unchanged, giving **16** upcoming fixtures total.
 The V33 fixture-card implementation already displays the venue, kickoff and field; no application/style updates are necessary.
 The 38-match archive, player stats, awards and 23 recorded MVP votes are unchanged.
+
+
+## One-day tournament support (V36)
+
+Tournament records are listed in `data.json` under `tournaments` and mirrored in `data.js`.
+Each entry can contain: `id` (stable slug), `name` (distinct competition name), `shortName`,
+`season`, `date`, `location`, `venue`, `format`, and `notes`. The `#tournaments` page
+lists each event, and `#tournaments/<id>` is its dedicated page.
+
+When its schedule is known, add normal items to `upcomingFixtures` using:
+- `tournamentId`: the exact event `id`
+- `competition`: the exact tournament `name`
+- `season`, `date`, `opponent`, `kickoff`, `field`, `venue` (as available)
+
+As results arrive, remove played upcoming fixtures and add standard match records to
+`matches` with the SAME `tournamentId`, event `name` as `competition`, and the usual
+`season`, `phase` (e.g. Group or Knockout), `date`, `opponent`, `gf`, `ga`, `players`
+(with `goals` and `motm`), and optional `ownGoals`. Existing match pages, all-time
+leaderboards, goal droughts, seasonal totals, and player profiles all include these
+matches automatically and exactly once. Every tournament remains separately
+filterable by event name, with a combined Tournaments category for convenience.
+
+No tournament match should be added to `mvpVotesByMatch`: the MVP vote race is
+exclusively for Hibiscus Coast Mens fixtures. Tournament MOTM awards count as
+ordinary MOTM honours when confirmed.
+
+**First registered event:** Football Fix Albany Summer Tournament 2026,
+28 November 2026. Opponents, times, format and results not yet provided.
+
+**Rebuild note:** `build_data.py` preserves newer-season match records and `tournaments`
+when rebuilding from the historic audit spreadsheets. Always edit `data.json` and
+regenerate `data.js` together.

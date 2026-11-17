@@ -2486,7 +2486,7 @@
       ]
     }
   ],
-  "lastUpdated": "2026-11-17",
+  "lastUpdated": "2026-11-18",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
@@ -2498,7 +2498,8 @@
     "MVP Vote Breakdown table has been intentionally removed from the current season page; full-width cumulative line graph is retained.",
     "15 November 2026 Week 2 appearance audit: Jamison Lawrence did not appear against West Orewa Knights or Optimate Me; Sofia Barnett appeared against West Orewa Knights. HBC Mixed Week 2 has 9 players; HBC Mens Week 2 has 8. Sofia Barnett was also present in Week 1 vs Running on Prosecco (previous spelling Sophia corrected).",
     "Upcoming 2026/27 Week 3 fixtures added on 16 November 2026: 17 Nov Warkworth Mixed vs Shoesmith United and Wirtz Case Scenario at Shoesmith Domain; 20 Nov HBC Mens vs Real Mid and HBC Mixed vs Bare Biscuits at Stanmore Bay Park. These fixtures are not counted in recorded match statistics until results are supplied.",
-    "17 November 2026 Warkworth Mixed: Shoesmith United 5–0 (MOTM Joshua Passingham) and Wirtz Case Scenario 3–1 (MOTM Jesse Attwood). Same 10 players in both games. Mixed MOTM selections do not contribute to HBC Mens MVP vote points."
+    "17 November 2026 Warkworth Mixed: Shoesmith United 5–0 (MOTM Joshua Passingham) and Wirtz Case Scenario 3–1 (MOTM Jesse Attwood). Same 10 players in both games. Mixed MOTM selections do not contribute to HBC Mens MVP vote points.",
+    "2026/27: Football Fix Albany Summer Tournament 2026 registered for 28 November 2026. Its matches will use tournamentId football-fix-albany-summer-2026 and the tournament name as their competition; tournament matches count for season and all-time stats, but do not earn HBC Mens MVP vote points."
   ],
   "awards": {
     "2024/25": {
@@ -2692,5 +2693,18 @@
       "Blake Boundy": 27,
       "Tom Barnett": 8
     }
-  }
+  },
+  "tournaments": [
+    {
+      "id": "football-fix-albany-summer-2026",
+      "name": "Football Fix Albany Summer Tournament 2026",
+      "shortName": "Football Fix Albany 2026",
+      "season": "2026/27",
+      "date": "2026-11-28",
+      "location": "Albany",
+      "venue": null,
+      "format": "One-day tournament",
+      "notes": "Fixtures, kick-off times and format details will be added when confirmed."
+    }
+  ]
 }

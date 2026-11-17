@@ -621,3 +621,44 @@ img{max-width:100%}
 
 /* V33 — distinct compact field number in fixture details */
 .fixture-info .fixture-field{color:#4c2875;font-weight:900;letter-spacing:.02em}
+
+
+/* V36 — Tournament hub and individual competition pages. */
+.tournament-list{display:grid;gap:14px}
+.tournament-event{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:22px;align-items:center;background:linear-gradient(110deg,#fff 0%,#f9f5ff 70%,#f0e8fb 100%);border:2px solid #b7a1d0;border-left:7px solid #8354b5;padding:25px 26px;border-radius:5px;color:#321b48;box-shadow:4px 5px 0 rgba(65,34,99,.1);transition:transform .15s ease,border-color .15s ease}
+.tournament-event:hover{transform:translateY(-2px);border-color:#8354b5}
+.tournament-event-badge,.tournament-detail-symbol{background:linear-gradient(150deg,#64368d,#342049);border:2px solid #bc91dd;border-radius:50%;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:1;font-size:43px;text-shadow:0 2px 6px #1d1438;width:88px}
+.tournament-event-badge small,.tournament-detail-symbol span{font:800 10px 'Roboto Mono',monospace;letter-spacing:2px;margin-top:-8px}
+.tournament-event-main{min-width:0}
+.tournament-event-main h2{font:900 clamp(22px,2.8vw,36px)/1.08 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;margin:4px 0 12px;letter-spacing:.25px}
+.tournament-event .eyebrow{color:#8253a5;margin-bottom:6px}
+.tournament-event-meta,.tournament-detail-facts{display:flex;flex-wrap:wrap;gap:10px 19px;color:#685174;font:700 12px 'Roboto Mono',monospace}
+.tournament-event-right{display:flex;flex-direction:column;align-items:flex-end;gap:13px;min-width:120px}
+.tournament-status{display:inline-flex;padding:6px 10px;border:1px solid #ac92c5;background:#eee8f5;color:#603f7c;font:900 10px 'Roboto Mono',monospace;letter-spacing:.7px;text-transform:uppercase;border-radius:3px;white-space:nowrap}
+.tournament-status.tournament-upcoming{background:#f5e6bc;color:#71521c;border-color:#d6b86a}
+.tournament-event-stats{font:700 11px 'Roboto Mono',monospace;color:#6c5875}
+.tournament-view{font:900 13px 'Roboto Mono',monospace;color:#6435a5}
+.tournament-detail-hero{display:flex;align-items:center;gap:27px;padding:25px 25px 28px;margin:14px 0 22px;background:linear-gradient(112deg,#fff,#f4eafa);border:2px solid #ae91ca;border-radius:5px;color:#36164f}
+.tournament-detail-symbol{width:112px;font-size:53px;flex:none}
+.tournament-detail-hero .headline{color:#36164f;line-height:1.1;margin:4px 0 14px;overflow-wrap:anywhere}
+.tournament-detail-hero .eyebrow{color:#8659a6}
+.tournament-detail-facts{align-items:center}
+.tournament-metrics{margin:18px 0 22px}
+.tournament-placeholder{display:flex;gap:18px;align-items:center;padding:25px;background:#faf7fd;border:2px dashed #b9a4ce;border-radius:5px;margin:16px 0 22px;color:#34194c}
+.tournament-placeholder-icon{font-size:36px;color:#935db6}
+.tournament-placeholder h3{font:900 25px 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;margin:0 0 7px}
+.tournament-placeholder p{font-size:13px;line-height:1.65;color:#715e82;margin:0;max-width:740px}
+.tournament-boards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:23px}
+.tournament-teasers{margin:22px 0}
+.tournament-teaser-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tournament-teaser{display:flex;align-items:center;gap:12px;background:linear-gradient(110deg,#f8f1ff,#fff);border:2px solid #bda9d4;border-radius:4px;color:#381657;padding:14px;transition:transform .15s}
+.tournament-teaser:hover{transform:translateY(-2px)}
+.tournament-teaser-symbol{width:49px;height:49px;flex:none;background:#5c327f;color:white;border-radius:50%;display:grid;place-items:center;font-size:25px}
+.tournament-teaser-copy{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tournament-teaser-copy strong{font:900 19px/1.1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase}
+.tournament-teaser-copy .mini{color:#795c89;font-weight:700}
+.tournament-match-back{display:inline-block;margin:0 0 16px 10px;color:#7146a5;font-weight:800}
+@media(max-width:950px){.tournament-event{grid-template-columns:70px minmax(0,1fr);padding:19px 17px;gap:14px}.tournament-event-badge{width:70px;font-size:34px}.tournament-event-right{grid-column:2;align-items:flex-start;flex-direction:row;flex-wrap:wrap;min-width:0}.tournament-detail-symbol{width:92px;font-size:44px}}
+@media(max-width:640px){.tournament-event{grid-template-columns:57px minmax(0,1fr);gap:12px;padding:14px}.tournament-event-badge{width:57px;font-size:29px}.tournament-event-badge small{font-size:8px}.tournament-event-main h2{font-size:24px}.tournament-event-meta{font-size:10px;gap:6px 13px}.tournament-detail-hero{padding:18px 13px;gap:12px;align-items:flex-start}.tournament-detail-symbol{width:62px;font-size:32px}.tournament-detail-hero .headline{font-size:clamp(24px,6vw,34px)}.tournament-detail-facts{font-size:10px}.tournament-teaser-grid,.tournament-boards{grid-template-columns:1fr}.tournament-placeholder{align-items:flex-start;padding:17px;gap:12px}.tournament-placeholder-icon{font-size:27px}}
+
+.tournament-finish{display:inline-block;color:#71429e;font-weight:900;font:900 11px 'Roboto Mono',monospace}

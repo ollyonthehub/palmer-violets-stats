@@ -2356,9 +2356,137 @@
           "motm": 1
         }
       ]
+    },
+    {
+      "id": "26-5",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "phase": "League",
+      "date": "2026-11-17",
+      "opponent": "Shoesmith United",
+      "opponentId": "Shoesmith United",
+      "gf": 5,
+      "ga": 0,
+      "ownGoals": 0,
+      "players": [
+        {
+          "name": "Jesse Attwood",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Jamison Lawrence",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Joshua Passingham",
+          "goals": 2,
+          "motm": 1
+        },
+        {
+          "name": "Tama Coory",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Cayden Steffener",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "William Healey",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Max Boundy",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Tom Barnett",
+          "goals": 0,
+          "motm": 0
+        }
+      ]
+    },
+    {
+      "id": "26-6",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "phase": "League",
+      "date": "2026-11-17",
+      "opponent": "Wirtz Case Scenario",
+      "opponentId": "Wirtz Case Scenario",
+      "gf": 3,
+      "ga": 1,
+      "ownGoals": 0,
+      "players": [
+        {
+          "name": "Jesse Attwood",
+          "goals": 1,
+          "motm": 1
+        },
+        {
+          "name": "Jamison Lawrence",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Joshua Passingham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Tama Coory",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Cayden Steffener",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "William Healey",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Max Boundy",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Tom Barnett",
+          "goals": 0,
+          "motm": 0
+        }
+      ]
     }
   ],
-  "lastUpdated": "2026-11-16",
+  "lastUpdated": "2026-11-17",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
@@ -2369,7 +2497,8 @@
     "2026/27 MVP points are votes cast ONLY in Hibiscus Coast Mens games; each vote equals 1 point. Warkworth Mixed and Hibiscus Coast Mixed use a selected MOTM winner but have no MVP vote tallies.",
     "MVP Vote Breakdown table has been intentionally removed from the current season page; full-width cumulative line graph is retained.",
     "15 November 2026 Week 2 appearance audit: Jamison Lawrence did not appear against West Orewa Knights or Optimate Me; Sofia Barnett appeared against West Orewa Knights. HBC Mixed Week 2 has 9 players; HBC Mens Week 2 has 8. Sofia Barnett was also present in Week 1 vs Running on Prosecco (previous spelling Sophia corrected).",
-    "Upcoming 2026/27 Week 3 fixtures added on 16 November 2026: 17 Nov Warkworth Mixed vs Shoesmith United and Wirtz Case Scenario at Shoesmith Domain; 20 Nov HBC Mens vs Real Mid and HBC Mixed vs Bare Biscuits at Stanmore Bay Park. These fixtures are not counted in recorded match statistics until results are supplied."
+    "Upcoming 2026/27 Week 3 fixtures added on 16 November 2026: 17 Nov Warkworth Mixed vs Shoesmith United and Wirtz Case Scenario at Shoesmith Domain; 20 Nov HBC Mens vs Real Mid and HBC Mixed vs Bare Biscuits at Stanmore Bay Park. These fixtures are not counted in recorded match statistics until results are supplied.",
+    "17 November 2026 Warkworth Mixed: Shoesmith United 5–0 (MOTM Joshua Passingham) and Wirtz Case Scenario 3–1 (MOTM Jesse Attwood). Same 10 players in both games. Mixed MOTM selections do not contribute to HBC Mens MVP vote points."
   ],
   "awards": {
     "2024/25": {
@@ -2392,26 +2521,6 @@
     }
   },
   "upcomingFixtures": [
-    {
-      "id": "up-2026-27-wwmixed-01",
-      "date": "2026-11-17",
-      "season": "2026/27",
-      "competition": "Warkworth Mixed",
-      "opponent": "Shoesmith United",
-      "venue": "Shoesmith Domain",
-      "kickoff": "5:45pm",
-      "field": "SF1"
-    },
-    {
-      "id": "up-2026-27-wwmixed-02",
-      "date": "2026-11-17",
-      "season": "2026/27",
-      "competition": "Warkworth Mixed",
-      "opponent": "Wirtz Case Scenario",
-      "venue": "Shoesmith Domain",
-      "kickoff": "6:30pm",
-      "field": "SF6"
-    },
     {
       "id": "up-2026-11-20-hbcmens",
       "date": "2026-11-20",

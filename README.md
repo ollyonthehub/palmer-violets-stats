@@ -250,3 +250,17 @@ ordinary MOTM honours when confirmed.
 **Rebuild note:** `build_data.py` preserves newer-season match records and `tournaments`
 when rebuilding from the historic audit spreadsheets. Always edit `data.json` and
 regenerate `data.js` together.
+
+
+## V37 — Longest winning streaks
+
+The **Records** page now displays the top five all-time consecutive-win runs,
+including dates, opponents, results, and each streak's goals scored/conceded.
+The club-record run and any currently active run are labelled. Clicking a match
+opens its existing match-detail page.
+
+These runs are recalculated from the full recorded-match archive in `app.js`;
+there is no separate streak data to update when new results are added.
+Streaks combine all competitions/seasons, and are unaffected by Records page
+filters. Where two matches have the same date, their original archive order is
+used. Ties share rank numbers (for example, two streaks ranked #2=).

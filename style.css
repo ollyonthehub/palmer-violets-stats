@@ -662,3 +662,31 @@ img{max-width:100%}
 @media(max-width:640px){.tournament-event{grid-template-columns:57px minmax(0,1fr);gap:12px;padding:14px}.tournament-event-badge{width:57px;font-size:29px}.tournament-event-badge small{font-size:8px}.tournament-event-main h2{font-size:24px}.tournament-event-meta{font-size:10px;gap:6px 13px}.tournament-detail-hero{padding:18px 13px;gap:12px;align-items:flex-start}.tournament-detail-symbol{width:62px;font-size:32px}.tournament-detail-hero .headline{font-size:clamp(24px,6vw,34px)}.tournament-detail-facts{font-size:10px}.tournament-teaser-grid,.tournament-boards{grid-template-columns:1fr}.tournament-placeholder{align-items:flex-start;padding:17px;gap:12px}.tournament-placeholder-icon{font-size:27px}}
 
 .tournament-finish{display:inline-block;color:#71429e;font-weight:900;font:900 11px 'Roboto Mono',monospace}
+
+
+/* V37 — Five all-time winning runs, automatically derived from the match archive. */
+.win-streaks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:start}
+.streak-card{min-width:0;overflow:hidden;border:2px solid #b9a3d1;border-top:5px solid #7b46ad;background:#fff;border-radius:4px;box-shadow:3px 4px 0 rgba(71,42,109,.12)}
+.streak-card.streak-record{grid-column:1/-1;border-top-color:#d4a339;border-color:#ccb58c;background:linear-gradient(#fffaf0,#fff 90px)}
+.streak-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;padding:17px 17px 11px}
+.streak-place{display:flex;align-items:baseline;gap:10px;min-width:0}
+.streak-rank{color:#7745a3;font:900 18px 'Barlow Condensed',Impact,sans-serif;white-space:nowrap}
+.streak-record .streak-rank{color:#9c6b20}
+.streak-wins{font:900 20px/1.1 'Barlow Condensed',Impact,sans-serif;color:#34144f;text-transform:uppercase}
+.streak-wins strong{font-size:30px}
+.streak-flags{display:flex;gap:6px;flex-wrap:wrap}
+.streak-flag{font:900 9px 'Roboto Mono',monospace;letter-spacing:.4px;white-space:nowrap;padding:5px 7px;border:1px solid;border-radius:2px}
+.streak-best{background:#f8e9c0;border-color:#e3c06a;color:#754d13}
+.streak-live{background:#d8f2e0;border-color:#91cba5;color:#17683e}
+.streak-summary{display:flex;flex-wrap:wrap;gap:6px 16px;color:#705982;font:700 11px 'Roboto Mono',monospace;padding:0 17px 14px}
+.streak-list{border-top:1px solid #dfd4ea}
+.streak-match{display:grid;grid-template-columns:94px minmax(0,1fr) auto;align-items:center;gap:8px 11px;text-align:left;width:100%;border:0;border-bottom:1px solid #e8e0ee;background:#fff;color:#3c2553;padding:10px 17px;font-family:inherit;cursor:pointer}
+.streak-match:last-child{border-bottom:0}
+.streak-match:hover,.streak-match:focus-visible{background:#f3eafa;outline:0}
+.streak-match:focus-visible{box-shadow:inset 0 0 0 2px #8e5cbb}
+.streak-match time{color:#765f88;font:700 10px 'Roboto Mono',monospace;white-space:nowrap}
+.streak-opponent{font:800 13px/1.3 'DM Sans',Arial,sans-serif;min-width:0;overflow-wrap:anywhere}
+.streak-result{white-space:nowrap;color:#3b2056;font:900 15px 'Barlow Condensed',Impact,sans-serif;letter-spacing:.2px}
+.streak-win{display:inline-block;font:900 9px 'Roboto Mono',monospace;background:#d9efdf;color:#17643b;padding:3px 5px;margin-left:2px}
+@media(max-width:950px){.win-streaks{grid-template-columns:1fr}.streak-card.streak-record{grid-column:auto}}
+@media(max-width:390px){.streak-head{padding:13px 11px 9px}.streak-summary{padding:0 11px 12px;font-size:10px}.streak-match{grid-template-columns:76px minmax(0,1fr) auto;gap:6px;padding:9px 10px}.streak-opponent{font-size:11px}.streak-result{font-size:13px}.streak-match time{white-space:normal;font-size:9px}}

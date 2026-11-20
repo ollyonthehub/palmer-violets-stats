@@ -264,3 +264,15 @@ there is no separate streak data to update when new results are added.
 Streaks combine all competitions/seasons, and are unaffected by Records page
 filters. Where two matches have the same date, their original archive order is
 used. Ties share rank numbers (for example, two streaks ranked #2=).
+
+
+## V38 — 20 November match results & top-three winning streaks
+
+- HBC Men's vs Real Mid: 10–0 win. Lineup: Max Boundy, Blake Boundy, Oliver Graham, Jamison Lawrence, Fabiano Jesus, Connagh Webb, Taj Oliver, Connor Passingham, Cayden Steffener, William Healey. Goals: Jamison Lawrence 4, Cayden Steffener 3, Max Boundy 1, Fabiano Jesus 1, Connagh Webb 1. MOTM William Healey (7 votes), with Jamison Lawrence receiving 3 votes. Only this match adds to MVP votes.
+- HBC Mixed vs Bare Biscuits: 10–3 win. Lineup: Max Boundy, Blake Boundy, Oliver Graham, Jamison Lawrence, Fabiano Jesus, Connagh Webb, Taj Oliver, Connor Passingham, Cayden Steffener, Niva Smith, Mika, Sofia Barnett. Goals: Cayden Steffener 4, Mika 1, Niva Smith 1, Connor Passingham 1, Taj Oliver 1, Connagh Webb 1, plus one opposition own goal. MOTM Oliver Graham, chosen outright, **no MVP votes**.
+- 'Sophia' from the match report is mapped to existing player 'Sofia Barnett' in the archive; 'Mika' is stored as provided pending a confirmed full name.
+- Both games on 20 November 2026 are removed from upcoming fixtures.
+- Records page now displays the top **three** winning streaks rather than five. New eight-match active run becomes the all-time club record.
+- Updated totals: 42 matches historically, 209 club goals, eight 2026/27 wins from eight games, 63 scored and 10 conceded in 2026/27, 12 upcoming fixtures, 33 recorded Men's MVP votes.
+
+To update an existing V37 GitHub deployment: replace `app.js`, `data.js` and `data.json`. `README.md` is also included for recordkeeping.

@@ -2484,9 +2484,147 @@
           "motm": 0
         }
       ]
+    },
+    {
+      "id": "26-7",
+      "season": "2026/27",
+      "competition": "Hibiscus Coast Mens",
+      "phase": "League",
+      "date": "2026-11-20",
+      "opponent": "Real Mid",
+      "opponentId": "Real Mid",
+      "gf": 10,
+      "ga": 0,
+      "ownGoals": 0,
+      "players": [
+        {
+          "name": "Max Boundy",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Blake Boundy",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Jamison Lawrence",
+          "goals": 4,
+          "motm": 0
+        },
+        {
+          "name": "Fabiano Jesus",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Connagh Webb",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Taj Oliver",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Cayden Steffener",
+          "goals": 3,
+          "motm": 0
+        },
+        {
+          "name": "William Healey",
+          "goals": 0,
+          "motm": 1
+        }
+      ]
+    },
+    {
+      "id": "26-8",
+      "season": "2026/27",
+      "competition": "Hibiscus Coast Mixed",
+      "phase": "League",
+      "date": "2026-11-20",
+      "opponent": "Bare Biscuits",
+      "opponentId": "Bare Biscuits",
+      "gf": 10,
+      "ga": 3,
+      "ownGoals": 1,
+      "players": [
+        {
+          "name": "Max Boundy",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Blake Boundy",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 0,
+          "motm": 1
+        },
+        {
+          "name": "Jamison Lawrence",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Fabiano Jesus",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Connagh Webb",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Taj Oliver",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Cayden Steffener",
+          "goals": 4,
+          "motm": 0
+        },
+        {
+          "name": "Niva Smith",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Mika",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Sofia Barnett",
+          "goals": 0,
+          "motm": 0
+        }
+      ]
     }
   ],
-  "lastUpdated": "2026-11-18",
+  "lastUpdated": "2026-11-20",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
@@ -2499,7 +2637,8 @@
     "15 November 2026 Week 2 appearance audit: Jamison Lawrence did not appear against West Orewa Knights or Optimate Me; Sofia Barnett appeared against West Orewa Knights. HBC Mixed Week 2 has 9 players; HBC Mens Week 2 has 8. Sofia Barnett was also present in Week 1 vs Running on Prosecco (previous spelling Sophia corrected).",
     "Upcoming 2026/27 Week 3 fixtures added on 16 November 2026: 17 Nov Warkworth Mixed vs Shoesmith United and Wirtz Case Scenario at Shoesmith Domain; 20 Nov HBC Mens vs Real Mid and HBC Mixed vs Bare Biscuits at Stanmore Bay Park. These fixtures are not counted in recorded match statistics until results are supplied.",
     "17 November 2026 Warkworth Mixed: Shoesmith United 5–0 (MOTM Joshua Passingham) and Wirtz Case Scenario 3–1 (MOTM Jesse Attwood). Same 10 players in both games. Mixed MOTM selections do not contribute to HBC Mens MVP vote points.",
-    "2026/27: Football Fix Albany Summer Tournament 2026 registered for 28 November 2026. Its matches will use tournamentId football-fix-albany-summer-2026 and the tournament name as their competition; tournament matches count for season and all-time stats, but do not earn HBC Mens MVP vote points."
+    "2026/27: Football Fix Albany Summer Tournament 2026 registered for 28 November 2026. Its matches will use tournamentId football-fix-albany-summer-2026 and the tournament name as their competition; tournament matches count for season and all-time stats, but do not earn HBC Mens MVP vote points.",
+    "20 November 2026: Real Mid 10–0 (Hibiscus Coast Mens; William Healey MOTM, 7 votes; Jamison Lawrence 3 votes). Bare Biscuits 10–3 (Hibiscus Coast Mixed; Oliver Graham chosen MOTM; 1 opposition own goal). Mika listed under the name provided; Sophia matched to existing Sofia Barnett record. Both fixtures marked complete."
   ],
   "awards": {
     "2024/25": {
@@ -2522,26 +2661,6 @@
     }
   },
   "upcomingFixtures": [
-    {
-      "id": "up-2026-11-20-hbcmens",
-      "date": "2026-11-20",
-      "season": "2026/27",
-      "competition": "Hibiscus Coast Mens",
-      "opponent": "Real Mid",
-      "venue": "Stanmore Bay Park",
-      "kickoff": "6:00pm",
-      "field": "4B"
-    },
-    {
-      "id": "up-2026-11-20-hbcmixed",
-      "date": "2026-11-20",
-      "season": "2026/27",
-      "competition": "Hibiscus Coast Mixed",
-      "opponent": "Bare Biscuits",
-      "venue": "Stanmore Bay Park",
-      "kickoff": "6:45pm",
-      "field": "2B"
-    },
     {
       "id": "up-2026-27-wwmixed-03",
       "date": "2026-11-24",
@@ -2674,6 +2793,10 @@
       "Cayden Steffener": 5,
       "William Healey": 1,
       "Connor Passingham": 1
+    },
+    "26-7": {
+      "William Healey": 7,
+      "Jamison Lawrence": 3
     }
   },
   "shirtNumbersBySeason": {

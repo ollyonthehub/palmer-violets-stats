@@ -248,9 +248,9 @@ function winningStreaks(){
  return runs.sort((a,b)=>b.wins-a.wins||a.first.localeCompare(b.first));
 }
 function winningStreaksHTML(){
- const top=winningStreaks().slice(0,5);
+ const top=winningStreaks().slice(0,3);
  if(!top.length)return '<div class="panel panel-pad">No winning streaks recorded yet.</div>';
- return `<div class="win-streaks" aria-label="Five longest winning streaks">${top.map((run,i)=>{
+ return `<div class="win-streaks" aria-label="Three longest winning streaks">${top.map((run,i)=>{
   const rank=1+top.slice(0,i).filter(other=>other.wins>run.wins).length;
   const tied=top.some((other,j)=>i!==j&&other.wins===run.wins);
   const period=run.first===run.last?fmtDate(run.first):`${fmtDate(run.first)} – ${fmtDate(run.last)}`;

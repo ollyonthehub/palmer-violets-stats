@@ -276,3 +276,23 @@ used. Ties share rank numbers (for example, two streaks ranked #2=).
 - Updated totals: 42 matches historically, 209 club goals, eight 2026/27 wins from eight games, 63 scored and 10 conceded in 2026/27, 12 upcoming fixtures, 33 recorded Men's MVP votes.
 
 To update an existing V37 GitHub deployment: replace `app.js`, `data.js` and `data.json`. `README.md` is also included for recordkeeping.
+
+
+## V39 — 24 November 2026 Warkworth Mixed results
+
+- **Vardy's Party (26-9):** 8–1 W. Lineup: Jamison Lawrence, Cayden Steffener, Joshua Passingham, Tama Coory, William Healey, Tom Barnett, Connor Passingham, Max Boundy, Oliver Graham and debutant Daniel Saric (10 appearances). Goals: Cayden 3, Joshua 3, Jamison 2. MOTM: Tama Coory. Daniel's first career and season appearance, with zero goals/MOTM.
+- **WWPest (26-10):** 9–1 W. Same squad as above **except Daniel Saric**, nine appearances. Goals: Oliver Graham 3, Jamison 2, Cayden 2, Joshua Passingham 1, Max Boundy 1. MOTM: Tom Barnett.
+- **Name consistency:** The supplied short form Josh Passingham uses existing archived name **Joshua Passingham** so his historical, current-season and all-time figures remain joined. The opponent is now consistently named **WWPest**, combining its historical and current head-to-head record.
+- Both 24 November completed fixtures removed from `upcomingFixtures`. The next listed fixture is HBC Mixed vs Coastie Sevens on 27 November.
+- The two matches add 17 scored, two conceded, 19 appearances and two selected MOTM awards. Current totals: **44 all-time matches, 226 goals scored; 2026/27 has 10 matches, 10 wins, 80 scored and 12 conceded; 10 fixtures remain upcoming; men's MVP remains 33 votes**.
+- The Records page **automatically** displays the three longest club winning streaks, now including the active 10-match winning run. The registered Albany tournament and all existing records/assets remain unchanged.
+
+**GitHub update from V38:** Replace `data.json` and `data.js` only. `README.md` is optional documentation. No changes to `app.js`, `style.css`, images, or `build_data.py` are necessary.
+
+
+## V40 — WWPest opponent-name consolidation
+
+- Confirmed earlier and recent opponent-name variants refer to the **same side**. Every match now uses the exact display name and opponent ID **WWPest**.
+- The matches on 14 January 2025, 11 February 2025, and 24 November 2026 are unified in the head-to-head profile: **3 played, 3 wins, 17 goals for, 3 goals against**.
+- All match results, player statistics, tournament records, current streaks and MVP points are unchanged.
+- **GitHub update from V39:** Replace `data.json` and `data.js`; `README.md` is optional.

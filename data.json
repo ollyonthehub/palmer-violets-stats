@@ -616,8 +616,8 @@
       "competition": "Warkworth Mixed",
       "phase": "League",
       "date": "2025-01-14",
-      "opponent": "WW Pests",
-      "opponentId": "WW Pests",
+      "opponent": "WWPest",
+      "opponentId": "WWPest",
       "gf": 5,
       "ga": 1,
       "ownGoals": 0,
@@ -1098,8 +1098,8 @@
       "competition": "Warkworth Mixed",
       "phase": "League",
       "date": "2025-02-11",
-      "opponent": "WW Pests",
-      "opponentId": "WW Pests",
+      "opponent": "WWPest",
+      "opponentId": "WWPest",
       "gf": 3,
       "ga": 1,
       "ownGoals": 0,
@@ -2622,9 +2622,132 @@
           "motm": 0
         }
       ]
+    },
+    {
+      "id": "26-9",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "phase": "League",
+      "date": "2026-11-24",
+      "opponent": "Vardy's Party",
+      "opponentId": "Vardy's Party",
+      "gf": 8,
+      "ga": 1,
+      "ownGoals": 0,
+      "players": [
+        {
+          "name": "Jamison Lawrence",
+          "goals": 2,
+          "motm": 0
+        },
+        {
+          "name": "Cayden Steffener",
+          "goals": 3,
+          "motm": 0
+        },
+        {
+          "name": "Joshua Passingham",
+          "goals": 3,
+          "motm": 0
+        },
+        {
+          "name": "Tama Coory",
+          "goals": 0,
+          "motm": 1
+        },
+        {
+          "name": "William Healey",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Tom Barnett",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Max Boundy",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Daniel Saric",
+          "goals": 0,
+          "motm": 0
+        }
+      ]
+    },
+    {
+      "id": "26-10",
+      "season": "2026/27",
+      "competition": "Warkworth Mixed",
+      "phase": "League",
+      "date": "2026-11-24",
+      "opponent": "WWPest",
+      "opponentId": "WWPest",
+      "gf": 9,
+      "ga": 1,
+      "ownGoals": 0,
+      "players": [
+        {
+          "name": "Jamison Lawrence",
+          "goals": 2,
+          "motm": 0
+        },
+        {
+          "name": "Cayden Steffener",
+          "goals": 2,
+          "motm": 0
+        },
+        {
+          "name": "Joshua Passingham",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Tama Coory",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "William Healey",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Tom Barnett",
+          "goals": 0,
+          "motm": 1
+        },
+        {
+          "name": "Connor Passingham",
+          "goals": 0,
+          "motm": 0
+        },
+        {
+          "name": "Max Boundy",
+          "goals": 1,
+          "motm": 0
+        },
+        {
+          "name": "Oliver Graham",
+          "goals": 3,
+          "motm": 0
+        }
+      ]
     }
   ],
-  "lastUpdated": "2026-11-20",
+  "lastUpdated": "2026-11-24",
   "notes": [
     "Read-only public statistics. Source data updated through audited records.",
     "Hibiscus Coast Mixed Running on Prosecco match date confirmed as 16 October 2026; Cayden Steffener confirmed as MOTM.",
@@ -2638,7 +2761,9 @@
     "Upcoming 2026/27 Week 3 fixtures added on 16 November 2026: 17 Nov Warkworth Mixed vs Shoesmith United and Wirtz Case Scenario at Shoesmith Domain; 20 Nov HBC Mens vs Real Mid and HBC Mixed vs Bare Biscuits at Stanmore Bay Park. These fixtures are not counted in recorded match statistics until results are supplied.",
     "17 November 2026 Warkworth Mixed: Shoesmith United 5–0 (MOTM Joshua Passingham) and Wirtz Case Scenario 3–1 (MOTM Jesse Attwood). Same 10 players in both games. Mixed MOTM selections do not contribute to HBC Mens MVP vote points.",
     "2026/27: Football Fix Albany Summer Tournament 2026 registered for 28 November 2026. Its matches will use tournamentId football-fix-albany-summer-2026 and the tournament name as their competition; tournament matches count for season and all-time stats, but do not earn HBC Mens MVP vote points.",
-    "20 November 2026: Real Mid 10–0 (Hibiscus Coast Mens; William Healey MOTM, 7 votes; Jamison Lawrence 3 votes). Bare Biscuits 10–3 (Hibiscus Coast Mixed; Oliver Graham chosen MOTM; 1 opposition own goal). Mika listed under the name provided; Sophia matched to existing Sofia Barnett record. Both fixtures marked complete."
+    "20 November 2026: Real Mid 10–0 (Hibiscus Coast Mens; William Healey MOTM, 7 votes; Jamison Lawrence 3 votes). Bare Biscuits 10–3 (Hibiscus Coast Mixed; Oliver Graham chosen MOTM; 1 opposition own goal). Mika listed under the name provided; Sophia matched to existing Sofia Barnett record. Both fixtures marked complete.",
+    "24 November 2026 Warkworth Mixed: Vardy’s Party 8–1 (Cayden Steffener 3, Joshua Passingham 3, Jamison Lawrence 2; MOTM Tama Coory), and WWPest 9–1 (Oliver Graham 3, Jamison Lawrence 2, Cayden Steffener 2, Joshua Passingham 1, Max Boundy 1; MOTM Tom Barnett). First match 10 appearances, second 9. Daniel Saric made his club debut against Vardy’s Party and did not play the second game. Josh Passingham entered as existing Joshua Passingham to preserve combined player history; both fixtures removed from upcoming. No MVP votes are awarded for Warkworth Mixed.",
+    "24 November 2026: Confirmed historic and current WWPest matches all refer to the same side. Their opponent display names and IDs are now unified as WWPest for combined head-to-head statistics."
   ],
   "awards": {
     "2024/25": {
@@ -2661,26 +2786,6 @@
     }
   },
   "upcomingFixtures": [
-    {
-      "id": "up-2026-27-wwmixed-03",
-      "date": "2026-11-24",
-      "season": "2026/27",
-      "competition": "Warkworth Mixed",
-      "opponent": "Vardy's Party",
-      "venue": "Shoesmith Domain",
-      "kickoff": "5:45pm",
-      "field": "SF6"
-    },
-    {
-      "id": "up-2026-27-wwmixed-04",
-      "date": "2026-11-24",
-      "season": "2026/27",
-      "competition": "Warkworth Mixed",
-      "opponent": "WWPEST",
-      "venue": "Shoesmith Domain",
-      "kickoff": "6:30pm",
-      "field": "SF5"
-    },
     {
       "id": "up-2026-11-27-hbcmixed-coastie-sevens",
       "date": "2026-11-27",
